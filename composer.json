@@ -1,0 +1,10 @@
+{
+    "name": "rustam/lifespan",
+    "description": "Lifespan overview",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {}
+}
