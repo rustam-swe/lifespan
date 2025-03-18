@@ -1,3 +1,3 @@
 <?php
 
-// view html
+(new \App\Controllers\Sleep())->calculate();

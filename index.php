@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require 'vendor/autoload.php';
+
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
 $age = 17; // FIXME: Calculate the actual age 
