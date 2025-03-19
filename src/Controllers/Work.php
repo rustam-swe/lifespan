@@ -44,7 +44,8 @@
             $leftWorkHours=$avgWorkSpan-$totalHours;
             $result=[
                 "worked"=>$totalHours,
-                "leftWork"=>$leftWorkHours
+                "leftWork"=>$leftWorkHours,
+                "avgTotal"=>$avgWorkSpan
             ];
 
             return $result;
