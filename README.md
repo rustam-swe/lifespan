@@ -4,7 +4,7 @@
 
 # Now we offer this chance especially for you by this project ! 
 
-# Thanks for your CONGRATULATIONS };) 
+# Thanks for your CONGRATULATIONS }:) 
 
 # Run your localhost in order to launch the project :
 ```bash

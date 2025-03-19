@@ -5,6 +5,6 @@
 
     interface WorkInterface {
         
-        public function __construct();
+        public function workHours($age);
     }
 ?>

@@ -1,7 +1,7 @@
 <!-- <?php
-    declare(strict_types=1);
+    //declare(strict_types=1);
 
-    use Controllers\Study;
+    //use Controllers\Study;
 
-    $study = new Study();
+    //$study = new Study();
 ?> -->
