@@ -6,7 +6,10 @@ namespace App\Controllers;
 date_default_timezone_set("Asia/Tashkent");
 
 class Sleep{
-  public function agecalculator($day,$month,$year){
+  public function agecalculator($birthday){
+    $year  = date("Y", strtotime($birthday)); 
+    $month = date("m", strtotime($birthday));  
+    $day   = date("d", strtotime($birthday));   
     $guide = [[14, 17], [12, 16], [11, 14], [10, 13], [9, 12], [8, 10], [7, 9], [7, 8]];
         $birth = new \DateTime("$year-$month-$day");
         $now = new \DateTime();
