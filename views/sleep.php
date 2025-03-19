@@ -11,7 +11,7 @@ use \App\Controllers\Sleep;
     <title>Document</title>
 </head>
 <body>
-    <h1>Sleep calculator</h1>
+    <h2>Sleep </h2>
     <form action="" method="POST">
         <label for="birthday">Enter your year, month, and day of birth</label><br><br>
         <input type="date" name="birthday"><br><br>
@@ -22,7 +22,7 @@ use \App\Controllers\Sleep;
         $month = date("m", strtotime($birthday)); // Oy  
         $day   = date("d", strtotime($birthday)); // Kun  
         $sleepObj = new Sleep();
-        $sleep=$sleepObj->agecalculator($day,$month,$year);<br><br>
+        $sleep=$sleepObj->agecalculator($day,$month,$year);
         echo "Born $day/$month/$year, slept ~ {$sleep['hours']} hours or {$sleep['years']} years.\n";
         echo "Remaining sleep ~ {$sleep['remainingHours']} hours or {$sleep['remainingYears']} years.\n"
         ?>

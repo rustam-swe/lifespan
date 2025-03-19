@@ -17,6 +17,8 @@
     <title>Work_Page</title>
 </head>
 <body>
+<hr>
+<h2>Work</h2>
     <label for="avgTotal">Average total work hours :</label>
     <input type="text" id="avgWork" name="avgWork" value="<?php echo ' '.$work->workHours($age)["avgTotal"].' hours'; ?>" readonly>
     <br><label for="workHours">You worked :</label>
