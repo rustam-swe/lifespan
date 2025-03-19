@@ -18,12 +18,13 @@ use \App\Controllers\Sleep;
         <button type="submit">Submit</button>
         <?php
         $birthday = $_POST["birthday"];
-        // var_dump($birthday);
+        $year  = date("Y", strtotime($birthday)); // Yil  
+        $month = date("m", strtotime($birthday)); // Oy  
+        $day   = date("d", strtotime($birthday)); // Kun  
         $sleepObj = new Sleep();
-        $sleep=$sleepObj->agecalculator($birthday);
-        echo "<p>How many years did you sleep: " . $sleep . "</p>";
-        // var_dump($year_sleep);
-        // echo "<p>How many years did you sleep: " . $sleep['years'] . "</p>";
+        $sleep=$sleepObj->agecalculator($day,$month,$year);<br><br>
+        echo "Born $day/$month/$year, slept ~ {$sleep['hours']} hours or {$sleep['years']} years.\n";
+        echo "Remaining sleep ~ {$sleep['remainingHours']} hours or {$sleep['remainingYears']} years.\n"
         ?>
     </form>
 </body>
