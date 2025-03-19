@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    use Controllers\Work;
+    use App\Controllers\Work;
 
     $work = new Work();
 

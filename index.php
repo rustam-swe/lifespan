@@ -7,7 +7,8 @@ require 'vendor/autoload.php';
 
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
-$age = 20; // FIXME: Calculate the actual age 
+$age = 20
+; // FIXME: Calculate the actual age 
 $_SESSION['age'] = $age;
 
 //require 'views/sleep.php';
