@@ -5,6 +5,6 @@ namespace App\Controllers;
 
 class Sleep{
   public function calculate(){
-    echo 'calculated';
+    
   }
 }
