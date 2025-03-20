@@ -3,7 +3,9 @@
     "description": "Lifespan overview",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "./src/",
+            "Interfaces\\":"./Interfaces/",
+            "Controllers\\":"./src/Controllers/"
         }
     },
     "require": {}
