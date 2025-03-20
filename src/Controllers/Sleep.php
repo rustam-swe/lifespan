@@ -54,7 +54,6 @@ class Sleep{
         $sleptYears = ($sleptHours / 24)/365;
 
         # Bu yerdan boshlab kelajakda qancha uxlashini hisoblash hisoblanadi.
-        ;
     
         if ($livedMonths <= 3){
             $remainingHours = ($davrlar[0] * (3 - $livedMonths)) + ($davrlar[1] * 8) + ($davrlar[2] * 13) + ($davrlar[3] * 48) +

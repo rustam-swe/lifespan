@@ -10,16 +10,17 @@ require 'vendor/autoload.php';
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
 $age = 23; // FIXME: Calculate the actual age 
-var_dump($currentDate);
 
 require 'views/form.php';
 
-$birthday = $_POST["dob"];
+if (isset($_POST["dob"])){
+  $birthday = $_POST["dob"];
+
+  require 'views/sleep.php';
 
 $age = 20; // FIXME: Calculate the actual age 
 $_SESSION['age'] = $age;
 
-require 'views/sleep.php';
 
 if($age > 7) {
   require 'views/study.php';
@@ -28,4 +29,5 @@ if($age > 7) {
 
 if($age >= 18){
   require 'views/work.php';
+}
 }
