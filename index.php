@@ -1,31 +1,35 @@
 <?php
-declare(strict_types=1);
+  declare(strict_types=1);
 
-session_start(); 
+  session_start(); 
 
-require 'vendor/autoload.php';
+  require 'vendor/autoload.php';
 
-// date_default_timezone_set("Asia/Tashkent");
+  // date_default_timezone_set("Asia/Tashkent");
 
-define('AVERAGE_LIFE_DURATION', 75);
-$currentDate = date('Y-m-d');
+  define('AVERAGE_LIFE_DURATION', 75);
+  $currentDate = date('Y-m-d');
 
 
-require 'views/form.php';
+  require 'views/form.php';
 
-$birthday = $_POST["dob"];
+  // if(!isset($_POST["dob"])) {
+  //   return;
+  // }
 
-$age = 20; // FIXME: Calculate the actual age 
+  $birthday = $_POST["dob"];
 
-$_SESSION['age'] = $age;
+  $age = 20; // FIXME: Calculate the actual age 
 
-// require 'views/sleep.php';
+  $_SESSION['age'] = $age;
 
-// if($age > 7) {
-//   require 'views/study.php';
-//   require 'views/road.php';
-// }
+  //require 'views/sleep.php';
 
-if($age >= 18){
-  require 'views/work.php';
-}
+  if($age > 7) {
+    require 'views/study.php';
+    require 'views/road.php';
+  }
+
+  if($age >= 18){
+    require 'views/work.php';
+  }

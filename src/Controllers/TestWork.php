@@ -1,35 +1,36 @@
 <?php
     declare(strict_types=1);
-
     namespace App\Controllers;
 
-    class Work implements \Interfaces\Interfaces {
+    class TestWork implements \Interfaces\Interfaces {
 
         /*
         $hoursByPeriods = [          
-            '18-24' => 4,
-            '25-54' => 8,
-            '55-64' => 7,
-            '65-75' => 5
-        ];*/
+            '18' => 4,
+            '25' => 8,
+            '55' => 7,
+            '65' => 5
+         ];*/
         
         public function calculateHours($age, $hoursByPeriods, $annualSpent) {
             
+            $periods=array_keys($hoursByPeriods);
             $totalHours = 0;
+            $avgWorkSpan = 0;
 
             if ($age >= 18) {
                 foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                    [$periodStart, $periodEnd] = explode('-', $range . '-');
-                    $avgYears = $periodEnd - $periodStart;
-                    
-                    $avgWorkSpan += $annualSpent * $avgYears * $hoursPerDay;
-                    
-                    if ($age > $periodStart) {
-                        $years = min($age, $periodEnd) - $periodStart;
+                    $next_range = $periods[array_search($range, $periods)+1];
+                    $end_range = $next_range==0 ? 75 : $next_range-1;
+
+                    if ($age > $range) {
+                        $years = min($age, $end_range) - $range;
                         $totalHours += $annualSpent * $years*$hoursPerDay;
                     }
+                    $avgWorkSpan +=$annualSpent * $hoursPerDay * ($end_range - $range);
                 }
+                
             }
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
@@ -40,7 +41,5 @@
             ];
         }
     }
-
-?>
-    
+?>   
 
