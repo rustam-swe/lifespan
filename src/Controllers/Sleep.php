@@ -54,7 +54,6 @@ class Sleep{
         $sleptYears = ($sleptHours / 24)/365;
 
         # Bu yerdan boshlab kelajakda qancha uxlashini hisoblash hisoblanadi.
-        ;
     
         if ($livedMonths <= 3){
             $remainingHours = ($davrlar[0] * (3 - $livedMonths)) + ($davrlar[1] * 8) + ($davrlar[2] * 13) + ($davrlar[3] * 48) +
@@ -88,7 +87,10 @@ class Sleep{
     
         $remainingHours *= $daysInMonth;
         $remainingYears = ($remainingHours / 24)/365;
-        return ['hours' => round($sleptHours), 'years' => round($sleptYears, 2), 'remainingHours' => round($remainingHours), 'remainingYears' => round($remainingYears, 2)];
+    
+        $totalSleepHours = $remainingHours + $sleptHours;
+        $totalSleepYears = $remainingYears + $sleptYears;
+        return ['hours' => round($sleptHours), 'years' => round($sleptYears, 2), 'remainingHours' => round($remainingHours), 'remainingYears' => round($remainingYears, 2),'totalSleepHours' => round($totalSleepHours),'totalSleepYears' => round($totalSleepYears)];
     }
 }
 ?>
