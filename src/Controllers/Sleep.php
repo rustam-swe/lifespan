@@ -88,7 +88,10 @@ class Sleep{
     
         $remainingHours *= $daysInMonth;
         $remainingYears = ($remainingHours / 24)/365;
-        return ['hours' => round($sleptHours), 'years' => round($sleptYears, 2), 'remainingHours' => round($remainingHours), 'remainingYears' => round($remainingYears, 2)];
+    
+        $totalSleepHours = $remainingHours + $sleptHours;
+        $totalSleepYears = $remainingYears + $sleptYears;
+        return ['hours' => round($sleptHours), 'years' => round($sleptYears, 2), 'remainingHours' => round($remainingHours), 'remainingYears' => round($remainingYears, 2),'totalSleepHours' => round($totalSleepHours),'totalSleepYears' => round($totalSleepYears)];
     }
 }
 ?>
