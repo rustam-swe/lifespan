@@ -9,6 +9,12 @@ require 'vendor/autoload.php';
 
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
+$age = 23; // FIXME: Calculate the actual age 
+var_dump($currentDate);
+
+require 'views/form.php';
+
+$birthday = $_POST["dob"];
 
 $age = 20; // FIXME: Calculate the actual age 
 $_SESSION['age'] = $age;
