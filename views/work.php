@@ -5,9 +5,14 @@
 
     $age = $_SESSION['age']??"No age selected";
 
-    $work = new Work();
-    $result=$work->workHours($age);
-    //echo $age;
+    $hoursByPeriods = [
+        '18-24' => 4,
+        '25-54' => 8,
+        '55-64' => 7,
+        '65-75' => 5
+    ];
+
+    $result = (new Work())->workHours($age, $hoursByPeriods);
 ?>
 
 <!DOCTYPE html>

@@ -10,7 +10,7 @@ $currentDate = date('Y-m-d');
 
 require 'views/form.php';
 
-if (isset($_POST["dob"])){
+if (!isset($_POST["dob"])){
   return;
 }
 
@@ -18,7 +18,7 @@ if (isset($_POST["dob"])){
 
   require 'views/sleep.php';
 
-$age = 20; // FIXME: Calculate the actual age 
+$age = 75 ; // FIXME: Calculate the actual age 
 
 $_SESSION['age'] = $age;
 

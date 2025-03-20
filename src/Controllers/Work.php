@@ -5,47 +5,29 @@
 
     class Work implements \Interfaces\WorkInterface {
         
-        public function workHours($age) {
-            if (!is_numeric($age)) {
-                return [
-                    "worked" => "Invalid input",
-                    "leftWork" => "Invalid input"
-                ];
-            }
+        public function workHours(int $age, $hoursByPeriods) {
             
-            $age = (int) $age;
             $workingDays = 5 * 50;
-            $baseWorkingHoursPerDayDuringCertainAgesPeriod = [
-                
-                '18-24' => 4,
-                '25-54' => 8,
-                '55-64' => 7,
-                '65-75'   => 5
-            ];
-            
-            $totalHours = 0;
+            $totalHours  = 0;
 
             if ($age >= 18) {
 
-                foreach ($baseWorkingHoursPerDayDuringCertainAgesPeriod as $range => $hoursPerDay) {
+                foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                    [$minEdgePeriod, $maxEdgePeriod] = explode('-', $range . '-');
-                    $minEdgePeriod = (int)$minEdgePeriod;
-                    $maxEdgePeriod = $maxEdgePeriod ? (int)$maxEdgePeriod : PHP_INT_MAX;
+                    [$periodStart, $periodEnd] = explode('-', $range . '-');
                     
-                    if ($age > $minEdgePeriod) {
-
-                        $years = min($age, $maxEdgePeriod) - $minEdgePeriod;
-                        $totalHours += $workingDays * $years*$hoursPerDay;
+                    if ($age > $periodStart) {
+                        $years      = min($age, $periodEnd) - $periodStart;
+                        $totalHours += $workingDays * $years * $hoursPerDay;
                     }
                 }
             }
             
-            $avgWorkSpan = $workingDays * (4 * 6 + 8 * 30 + 7 * 10 + 5 * 11);
+            $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
-                "worked" => $totalHours,
+                "worked"   => $totalHours,
                 "leftWork" => $leftWorkHours,
                 "avgTotal" => $avgWorkSpan
             ];
