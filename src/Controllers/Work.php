@@ -29,13 +29,13 @@
 
                 foreach ($baseWorkingHoursPerDayDuringCertainAgesPeriod as $range => $hoursPerDay) {
 
-                    [$min, $max] = explode('-', $range . '-');
-                    $min = (int)$min;
-                    $max = $max ? (int)$max : PHP_INT_MAX;
+                    [$minEdgePeriod, $maxEdgePeriod] = explode('-', $range . '-');
+                    $minEdgePeriod = (int)$minEdgePeriod;
+                    $maxEdgePeriod = $maxEdgePeriod ? (int)$maxEdgePeriod : PHP_INT_MAX;
                     
-                    if ($age > $min) {
+                    if ($age > $minEdgePeriod) {
 
-                        $years = min($age, $max) - $min;
+                        $years = min($age, $maxEdgePeriod) - $minEdgePeriod;
                         $totalHours += $workingDays * $years*$hoursPerDay;
                     }
                 }
