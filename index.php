@@ -60,13 +60,13 @@
             }
         }
 
-        $familyPercentage = ($totalDaysLived > 0) ? round(($familyDays / $totalDaysLived) * 100, 2) : 0;
+        $familyHours = $familyDays * 24;
 
         return [
             'total_days' => $totalDaysLived,
             'family_days' => round($familyDays),
-            'family_percentage' => $familyPercentage
-        ];
+            'family_hours' => round($familyHours)
+            ];
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["birthdate"])) {
@@ -79,7 +79,7 @@
         } else {
             echo "<h3>Result:</h3>";
             echo "<p>You have lived <strong>{$result['total_days']}</strong> days.</p>";
-            echo "<p>Approximately <strong>{$result['family_days']}</strong> of those days were spent with family ({$result['family_percentage']}%).</p>";
+            echo "<p>Approximately <strong>{$result['family_days']}</strong> of those days or around <strong>{$result['family_hours']}</strong> hours were spent with family.</p>";
         }
     }
     ?>
