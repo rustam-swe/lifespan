@@ -10,7 +10,7 @@
             $workingDays = 5 * 50;
             $totalHours  = 0;
 
-            if ($age >= 18) {
+            
 
                 foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
@@ -19,9 +19,9 @@
                     if ($age > $periodStart) {
                         $years      = min($age, $periodEnd) - $periodStart;
                         $totalHours += $workingDays * $years * $hoursPerDay;
-                    }
                 }
             }
+            
             
             $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
             $leftWorkHours = $avgWorkSpan - $totalHours;
