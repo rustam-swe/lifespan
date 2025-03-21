@@ -20,7 +20,9 @@ $generalInfo .= "<br> Age: $person->age";
 
 echo $generalInfo;
 
-  require 'views/sleep.php';
+$stats = new \App\Stats($person);
+$stats->getSleep();
+
   require 'views/family.php';
 
   $_SESSION['age'] = $person->age;
@@ -30,6 +32,4 @@ if($person->age > 7) {
    require 'views/road.php';
 }
 
-if($person->age >= 18){
-  require 'views/work.php';
-}
+$stats->getWork();
