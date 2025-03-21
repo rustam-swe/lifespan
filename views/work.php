@@ -2,8 +2,10 @@
     declare(strict_types=1);
     use App\Controllers\TestWork;
     use App\Controllers\Work;
-    
+    use \App\Person;
     $work = new Work();
+    $person = new Person($_SESSION['birthday']);
+    $interval=$person->period;
     $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
     $hoursByPeriods = [          
         // '18' => 4,       
@@ -16,9 +18,8 @@
         '55-64' => 7,
         '65-75' => 5
     ];
-    echo "\nAge: ".$age;
+    echo "\n\nAgework: ".$interval->y;
     $result=$work->calculateHours($interval, $hoursByPeriods, $annualSpent);
-    echo "\nAdditionalDaysHours:".$result['additionalDaysHours']
 ?>
 
 <!DOCTYPE html>
