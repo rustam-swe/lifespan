@@ -1,54 +1,36 @@
 <?php
     declare(strict_types=1);
 
-    namespace Controllers;
+    namespace App\Controllers;
 
     class Work implements \Interfaces\WorkInterface {
         
-        public function workHours($age) {
-
-            if (is_numeric($age)) {
-                $age = (int)$age;
-            } else {
-                $result = [
-                    "worked" => "Invalid input",
-                    "leftWork" => "Invalid input"
-                ];
-                return $result;
-            }
-    
-            $workingDays = 5 * 50;
-            $avgWorkSpan=$workingDays*(4*6 + 8*30 + 7*10 + 5*11);
+        public function workHours(int $age, $hoursByPeriods) {
             
-            if($age>=18 && $age<=24) {
+            $workingDays = 5 * 50;
+            $totalHours  = 0;
 
-                $totalHours = $workingDays*4*($age-18);
-            } 
-            elseif($age>24 && $age<=54) {
+            if ($age >= 18) {
 
-                $totalHours = $workingDays*(6*4 + 8*($age-24));
-            } 
-            elseif($age>54 && $age<=64) {
+                foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                $totalHours = $workingDays*(6*4 + 8*29 + 7*($age-54));
-            } 
-            elseif($age>65) {
-
-                $totalHours = $workingDays*(6*4 + 8*29 + 7*9 + 5*($age-64));
-            } 
-            else {
-
-                $totalHours = 0;
+                    [$periodStart, $periodEnd] = explode('-', $range . '-');
+                    
+                    if ($age > $periodStart) {
+                        $years      = min($age, $periodEnd) - $periodStart;
+                        $totalHours += $workingDays * $years * $hoursPerDay;
+                    }
+                }
             }
-
-            $leftWorkHours=$avgWorkSpan-$totalHours;
-            $result=[
-                "worked"=>$totalHours,
-                "leftWork"=>$leftWorkHours,
-                "avgTotal"=>$avgWorkSpan
+            
+            $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
+            $leftWorkHours = $avgWorkSpan - $totalHours;
+            
+            return [
+                "worked"   => $totalHours,
+                "leftWork" => $leftWorkHours,
+                "avgTotal" => $avgWorkSpan
             ];
-
-            return $result;
         }
     }
 

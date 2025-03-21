@@ -1,12 +1,18 @@
 <?php
     declare(strict_types=1);
 
-    use Controllers\Work;
-
-    $work = new Work();
+    use App\Controllers\Work;
 
     $age = $_SESSION['age']??"No age selected";
-    //echo $age;
+
+    $hoursByPeriods = [
+        '18-24' => 4,
+        '25-54' => 8,
+        '55-64' => 7,
+        '65-75' => 5
+    ];
+
+    $result = (new Work())->workHours($age, $hoursByPeriods);
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +26,10 @@
 <hr>
 <h2>Work</h2>
     <label for="avgTotal">Average total work hours :</label>
-    <input type="text" id="avgWork" name="avgWork" value="<?php echo ' '.$work->workHours($age)["avgTotal"].' hours'; ?>" readonly>
+    <input type="text" id="avgWork" name="avgWork" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
     <br><label for="workHours">You worked :</label>
-    <input type="text" id="workHours" name="workHours" value="<?php echo ' '.$work->workHours($age)["worked"].' hours'; ?>" readonly>
+    <input type="text" id="workHours" name="workHours" value="<?php echo ' '.$result["worked"].' hours'; ?>" readonly>
     <br><label for="leftWork">You can work another :</label>
-    <input type="text" id="leftWork" name="leftWork" value="<?php echo ' '.$work->workHours($age)["leftWork"].' hours'; ?>" readonly>
+    <input type="text" id="leftWork" name="leftWork" value="<?php echo ' '.$result["leftWork"].' hours'; ?>" readonly>
 </body>
 </html>

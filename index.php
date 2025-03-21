@@ -5,20 +5,30 @@ session_start();
 
 require 'vendor/autoload.php';
 
-
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
 
+require 'views/form.php';   
+
 $birthday = $_POST["dob"] ?? null;
 
+if (!isset($_POST["dob"])){
+  return;
+}
 
-$age = 20; 
+  $birthday = $_POST["dob"];
+
+  require 'views/sleep.php';
+  require 'views/family.php';
+
+$age = 75 ; // FIXME: Calculate the actual age 
 
 $_SESSION['age'] = $age;
 
-require 'src/Controllers/Family.php'; 
-require 'views/family.php';           
-require 'views/form.php';             
+if($age > 7) {
+   require 'views/study.php';
+   require 'views/road.php';
+}
 
 if($age >= 18) {
     require 'views/work.php';
