@@ -4,18 +4,9 @@
     namespace App\Controllers;
 
     class Work implements \Interfaces\Interfaces {
-
-        /*
-        $hoursByPeriods = [          
-            '18-24' => 4,
-            '25-54' => 8,
-            '55-64' => 7,
-            '65-75' => 5
-        ];*/
-        
         public function calculateHours($age, $hoursByPeriods, $annualSpent) {
-            
-            $totalHours = 0;
+            $totalHours  = 0;
+            $avgWorkSpan = 0;
             foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
                 [$periodStart, $periodEnd] = explode('-', $range . '-');
@@ -28,6 +19,7 @@
                     $totalHours += $annualSpent * $years*$hoursPerDay;
                 }
             }          
+
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
@@ -37,7 +29,3 @@
             ];
         }
     }
-
-?>
-    
-

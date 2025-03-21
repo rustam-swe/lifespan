@@ -10,13 +10,12 @@ $currentDate = date('Y-m-d');
 
 require 'views/form.php';   
 
-$birthday = $_POST["dob"] ?? null;
-
 if (!isset($_POST["dob"])){
   return;
 }
 
-  $birthday = $_POST["dob"];
+$birthday = $_POST["dob"];
+
 
   require 'views/sleep.php';
   require 'views/family.php';
@@ -30,6 +29,6 @@ if($age > 7) {
    require 'views/road.php';
 }
 
-if($age >= 18) {
-    require 'views/work.php';
+if($age >= 18){
+  require 'views/work.php';
 }
