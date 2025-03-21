@@ -25,5 +25,9 @@ $familyTime = $family->calculateFamilyTime($birthday);
     <input type="text" id="familyDays" name="familyDays" value="<?php echo ' '.$familyTime['family_days'].' days'; ?>" readonly>
     <br><label for="familyHours">In family time:</label>
     <input type="text" id="familyHours" name="familyHours" value="<?php echo ' '.$familyTime['family_hours'].' hours'; ?>" readonly>
+    <br><label for="remainingDaysWithFamily">You have:</label>
+    <input type="text" id="remainingDaysWithFamily" name="remainingDaysWithFamily" value="<?php echo ' '.$familyTime['remaining_days_with_family'].' days'; ?>" readonly>
+    <br><label for="remainingHoursWithFamily">In family time:</label>
+    <input type="text" id="remainingHoursWithFamily" name="remainingHoursWithFamily" value="<?php echo ' '.$familyTime['remaining_hours_with_family'].' hours'; ?>" readonly>
 </body>
 </html>

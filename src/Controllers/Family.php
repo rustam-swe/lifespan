@@ -16,6 +16,7 @@ class Family {
         $age = $birth->diff($now)->y;
         $totalDaysLived = $birth->diff($now)->days;
         $familyDays = 0;
+        $averageLifeDuration = AVERAGE_LIFE_DURATION;
 
         for ($i = 0; $i < $age; $i++) {
             if ($i < 4) {
@@ -51,11 +52,17 @@ class Family {
         }
 
         $familyHours = $familyDays * 24;
+        $remainingYears = $averageLifeDuration - $age;
+        $remainingDaysWithFamily = $remainingYears * 0.3 * 365;
+        $remainingHoursWithFamily = $remainingDaysWithFamily * 24;
 
         return [
             'total_days' => $totalDaysLived,
             'family_days' => round($familyDays),
-            'family_hours' => round($familyHours)
+            'family_hours' => round($familyHours),
+            'remaining_days_with_family' => round($remainingDaysWithFamily),
+            'remaining_hours_with_family' => round($remainingHoursWithFamily)
         ];
     }
 }
+
