@@ -3,32 +3,29 @@
 
   session_start(); 
 
-  require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
-  // date_default_timezone_set("Asia/Tashkent");
+define('AVERAGE_LIFE_DURATION', 75);
+$currentDate = date('Y-m-d');
 
-  define('AVERAGE_LIFE_DURATION', 75);
-  $currentDate = date('Y-m-d');
+require 'views/form.php';
 
-
-  require 'views/form.php';
-
-  // if(!isset($_POST["dob"])) {
-  //   return;
-  // }
+if (!isset($_POST["dob"])){
+  return;
+}
 
   $birthday = $_POST["dob"];
 
-  $age = 20; // FIXME: Calculate the actual age 
+  require 'views/sleep.php';
+
+$age = 75 ; // FIXME: Calculate the actual age 
 
   $_SESSION['age'] = $age;
 
-  //require 'views/sleep.php';
-
-  if($age > 7) {
-    require 'views/study.php';
-    require 'views/road.php';
-  }
+if($age > 7) {
+   require 'views/study.php';
+   require 'views/road.php';
+}
 
   if($age >= 18){
     require 'views/work.php';

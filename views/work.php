@@ -4,6 +4,7 @@
     use App\Controllers\Work;
 
     $age = $_SESSION['age']??"No age selected";
+
     $work = new Work();
 
     $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
@@ -19,6 +20,7 @@
         '65-75' => 5
     ];
     $result=$work->calculateHours($age, $hoursByPeriods, $annualSpent);
+
 ?>
 
 <!DOCTYPE html>
