@@ -2,11 +2,8 @@
     declare(strict_types=1);
     use App\Controllers\TestWork;
     use App\Controllers\Work;
-
-    $age = $_SESSION['age']??"No age selected";
-
+    
     $work = new Work();
-
     $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
     $hoursByPeriods = [          
         // '18' => 4,       
@@ -19,8 +16,9 @@
         '55-64' => 7,
         '65-75' => 5
     ];
-    $result=$work->calculateHours($age, $hoursByPeriods, $annualSpent);
-
+    echo "\nAge: ".$age;
+    $result=$work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+    echo "\nAdditionalDaysHours:".$result['additionalDaysHours']
 ?>
 
 <!DOCTYPE html>
