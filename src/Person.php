@@ -7,7 +7,7 @@ use \DateTime;
 use \DateInterval;
 
 class Person {
-  const int AVERAGE_LIFE_DURATION = 75;
+  const AVERAGE_LIFE_DURATION = 75;
 
   public readonly DateTime     $dob;
   public readonly int          $age;

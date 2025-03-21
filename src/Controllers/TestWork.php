@@ -18,19 +18,16 @@
             $totalHours = 0;
             $avgWorkSpan = 0;
 
-            if ($age >= 18) {
-                foreach ($hoursByPeriods as $range => $hoursPerDay) {
+            foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                    $next_range = $periods[array_search($range, $periods)+1];
-                    $end_range = $next_range==0 ? 75 : $next_range-1;
+                $next_range = $periods[array_search($range, $periods)+1];
+                $end_range = $next_range==0 ? 75 : $next_range-1;
 
-                    if ($age > $range) {
-                        $years = min($age, $end_range) - $range;
-                        $totalHours += $annualSpent * $years*$hoursPerDay;
-                    }
-                    $avgWorkSpan +=$annualSpent * $hoursPerDay * ($end_range - $range);
+                if ($age > $range) {
+                    $years = min($age, $end_range) - $range;
+                    $totalHours += $annualSpent * $years*$hoursPerDay;
                 }
-                
+                $avgWorkSpan +=$annualSpent * $hoursPerDay * ($end_range - $range);
             }
             $leftWorkHours = $avgWorkSpan - $totalHours;
             

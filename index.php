@@ -25,7 +25,7 @@ $stats->getSleep();
 
   require 'views/family.php';
 
-  $_SESSION['age'] = $person->age;
+  $_SESSION['birthday'] = $birthday;
 
 if($person->age > 7) {
    require 'views/study.php';
