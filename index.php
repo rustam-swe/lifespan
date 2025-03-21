@@ -1,14 +1,14 @@
 <?php
-declare(strict_types=1);
+  declare(strict_types=1);
 
-session_start(); 
+  session_start(); 
 
 require 'vendor/autoload.php';
 
 define('AVERAGE_LIFE_DURATION', 75);
 $currentDate = date('Y-m-d');
 
-require 'views/form.php';
+require 'views/form.php';   
 
 if (!isset($_POST["dob"])){
   return;
@@ -16,11 +16,13 @@ if (!isset($_POST["dob"])){
 
 $birthday = $_POST["dob"];
 
-require 'views/sleep.php';
 
-$age = 20; // FIXME: Calculate the actual age 
+  require 'views/sleep.php';
+  require 'views/family.php';
 
-$_SESSION['age'] = $age;
+$age = 75 ; // FIXME: Calculate the actual age 
+
+  $_SESSION['age'] = $age;
 
 if($age > 7) {
    require 'views/study.php';
@@ -30,4 +32,3 @@ if($age > 7) {
 if($age >= 18){
   require 'views/work.php';
 }
-
