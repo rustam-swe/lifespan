@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Controllers;
+namespace App\Controllers;
 
 class Family {
     
@@ -16,7 +16,7 @@ class Family {
         $age = $birth->diff($now)->y;
         $totalDaysLived = $birth->diff($now)->days;
         $familyDays = 0;
-        $averageLifeDuration = AVERAGE_LIFE_DURATION;
+        $averageLifeDuration = \App\Person::AVERAGE_LIFE_DURATION;
 
         for ($i = 0; $i < $age; $i++) {
             if ($i < 4) {

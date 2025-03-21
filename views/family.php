@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Controllers\Family;
+use App\Controllers\Family;
 
 $age = $_SESSION['age'] ?? "No age selected";
 

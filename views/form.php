@@ -8,7 +8,7 @@
 <body>
 <form action="index.php" method="POST">
         <label for="dob">Enter your year, month, and day of birth</label><br><br>
-        <input type="date" name="dob"><br><br>
+        <input type="date" name="dob" required><br><br>
         <button type="submit">Submit</button><br><br>
 </form>
 </body>
