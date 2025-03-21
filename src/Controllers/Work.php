@@ -15,9 +15,9 @@
         
         public function calculateHours($age, $hoursByPeriods, $annualSpent) {
             
-            $totalHours = 0;
+            $totalHours  = 0;
+            $avgWorkSpan = 0;
 
-            if ($age >= 18) {
                 foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
                     [$periodStart, $periodEnd] = explode('-', $range . '-');
@@ -30,7 +30,6 @@
                         $totalHours += $annualSpent * $years*$hoursPerDay;
                     }
                 }
-            }
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
