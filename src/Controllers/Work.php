@@ -3,32 +3,36 @@
 
     namespace App\Controllers;
 
-    class Work implements \Interfaces\WorkInterface {
+    class Work implements \Interfaces\Interfaces {
+
+        /*
+        $hoursByPeriods = [          
+            '18-24' => 4,
+            '25-54' => 8,
+            '55-64' => 7,
+            '65-75' => 5
+        ];*/
         
-        public function workHours(int $age, $hoursByPeriods) {
+        public function calculateHours($age, $hoursByPeriods, $annualSpent) {
             
-            $workingDays = 5 * 50;
-            $totalHours  = 0;
+            $totalHours = 0;
+            foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-            if ($age >= 18) {
-
-                foreach ($hoursByPeriods as $range => $hoursPerDay) {
-
-                    [$periodStart, $periodEnd] = explode('-', $range . '-');
+                [$periodStart, $periodEnd] = explode('-', $range . '-');
+                $avgYears = $periodEnd - $periodStart;
                     
-                    if ($age > $periodStart) {
-                        $years      = min($age, $periodEnd) - $periodStart;
-                        $totalHours += $workingDays * $years * $hoursPerDay;
-                    }
+                $avgWorkSpan += $annualSpent * $avgYears * $hoursPerDay;
+                    
+                if ($age > $periodStart) {
+                    $years = min($age, $periodEnd) - $periodStart;
+                    $totalHours += $annualSpent * $years*$hoursPerDay;
                 }
-            }
-            
-            $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
+            }          
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
-                "worked"   => $totalHours,
-                "leftWork" => $leftWorkHours,
+                "Done" => $totalHours,
+                "Left" => $leftWorkHours,
                 "avgTotal" => $avgWorkSpan
             ];
         }

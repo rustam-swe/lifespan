@@ -1,7 +1,7 @@
 <?php
-declare(strict_types=1);
+  declare(strict_types=1);
 
-session_start(); 
+  session_start(); 
 
 require 'vendor/autoload.php';
 
@@ -23,7 +23,7 @@ if (!isset($_POST["dob"])){
 
 $age = 75 ; // FIXME: Calculate the actual age 
 
-$_SESSION['age'] = $age;
+  $_SESSION['age'] = $age;
 
 if($age > 7) {
    require 'views/study.php';
