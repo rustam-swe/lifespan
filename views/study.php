@@ -27,6 +27,7 @@
     $result = (new Study())->studyHours($age, $hoursByPeriods);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
