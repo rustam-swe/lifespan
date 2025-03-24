@@ -12,13 +12,16 @@ if (!isset($_POST["dob"])){
   return;
 }
 
+
 $birthday = $_POST["dob"];
+
 
 $person = new \App\Person($birthday);
 $generalInfo =  "Current date:". date('Y-m-d');
 $generalInfo .= "<br> Age: $person->age";
 
 echo $generalInfo;
+
 
 $stats = new \App\Stats($person);
 $stats->getSleep();
@@ -33,3 +36,8 @@ if($person->age > 7) {
 }
 
 $stats->getWork();
+
+
+
+$_SESSION['years_for_eating'] = $birthday;
+require 'views/eating.php';

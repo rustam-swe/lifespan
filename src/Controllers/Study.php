@@ -1,7 +1,7 @@
 <!-- <?php
-    declare(strict_types=1);
+    //declare(strict_types=1);
 
-    namespace Controllers;
+    //namespace Controllers;
 
     class Study implements \Interfaces\Interfaces {
 
