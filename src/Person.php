@@ -7,11 +7,11 @@ use \DateTime;
 use \DateInterval;
 
 class Person {
-  const int AVERAGE_LIFE_DURATION = 75;
+  const AVERAGE_LIFE_DURATION = 75;
 
   public readonly DateTime     $dob;
   public readonly int          $age;
-  public readonly DateInterval $period;
+  public readonly DateInterval $period; // FIXME: Give an appropriate name 
   
   public function __construct(string $birthday) {
     $this->dob    = new DateTime($birthday);
