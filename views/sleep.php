@@ -1,11 +1,8 @@
 <?php
 $sleepObj = new \App\Controllers\Sleep();   
-$person = new \App\Person($birthday);
+$person   = new \App\Person($birthday);
 $interval = $person->period;
-$result=$sleepObj->sleepstat($interval);
-
-// use \App\Controllers\Sleep;
-// $sleepObj = (new Sleep())->agecalculator($birthday);
+$result   = $sleepObj->sleepstat($interval);
 ?>
 <h2>Slept</h2>
 <label>Total Slept: <input type="text" value=" <?= $result['hours'] ?> hours or <?= $result['years'] ?> years." readonly></label><br><br>
