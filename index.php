@@ -19,7 +19,7 @@ $birthday = $_POST["dob"];
 
 require 'views/sleep.php';
 
-$age = 75 ; // FIXME: Calculate the actual age 
+$age = 60 ; // FIXME: Calculate the actual age 
 
 $_SESSION['age'] = $age;
 

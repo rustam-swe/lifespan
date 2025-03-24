@@ -5,7 +5,7 @@
 
     class Study implements \Interfaces\StudyInterface {
         
-        public function studyHours(int $age, $hoursByPeriods) {
+        public function studyHours($age, $hoursByPeriods) {
             
             $studyDays = 5 * 37;//**** */
             $totalHours  = 0;
