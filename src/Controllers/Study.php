@@ -12,7 +12,7 @@ class Study implements \Interfaces\Interfaces {
         if ($age >= 18) {
             foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                [$periodStart, $periodEnd] = explode('-', $range . '-');
+                [$periodStart, $periodEnd] = explode('-', $range . '-');    
                 
                 if ($age > $periodStart) {
                     $years = min($age, $periodEnd) - $periodStart;
