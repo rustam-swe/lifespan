@@ -1,10 +1,10 @@
 <?php
     declare(strict_types=1);
 
-    $work = new \App\Controllers\Work();
-    $person = new \App\Person($_SESSION['birthday']);
+    $work     = new \App\Controllers\Work();
+    $person   = new \App\Person($_SESSION['birthday']);
     $interval = $person->period;
-    $result=$work->workstat($interval);
+    $result   = $work->workstat($interval);
 ?>
 
 <!DOCTYPE html>

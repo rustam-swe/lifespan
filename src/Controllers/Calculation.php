@@ -7,10 +7,10 @@
         
         public function calculateHours($interval, $hoursByPeriods, $annualSpent) {
             
-            $age = $interval->y;
-            $additionalDays = $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
-            $totalHours = 0;
-            $avgWorkSpan = 0;
+            $age                = $interval->y;
+            $additionalDays     = $age>=75 ? 0 : $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
+            $totalHours         = 0;
+            $avgWorkSpan        = 0;
             $additionalDayHours = 0;
 
             foreach($hoursByPeriods as $range => $hoursPerDay) {
@@ -30,9 +30,10 @@
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
-                "Done" => round($totalHours, 2),
-                "Left" => round($leftWorkHours, 2),
+                "Done"     => round($totalHours, 2),
+                "Left"     => round($leftWorkHours, 2),
                 "avgTotal" => $avgWorkSpan,
             ];
         }
     }
+    // 122 years  164 days

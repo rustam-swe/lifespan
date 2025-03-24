@@ -8,28 +8,28 @@ require 'vendor/autoload.php';
 
 require 'views/form.php';   
 
-// if (!isset($_POST["dob"])){
-//   return;
-// }
+ if (!isset($_POST["dob"])){
+   return;
+ }
 
  $birthday = $_POST["dob"]?? '2000-01-01';
 
- $person = new \App\Person($birthday);
- $generalInfo =  "Current date:". date('Y-m-d');
+ $person       = new \App\Person($birthday);
+ $generalInfo  =  "Current date:". date('Y-m-d');
  $generalInfo .= "<br> Age: $person->age";
 
  echo $generalInfo;
 
  $stats = new \App\Stats($person);
-// $stats->getSleep();
+ $stats->getSleep();
 
-// require 'views/family.php';
+ require 'views/family.php';
 
  $_SESSION['birthday'] = $birthday;
 
-// if($person->age > 7) {
-//    require 'views/study.php';
-//    require 'views/road.php';
-// }
+ if($person->age > 7) {
+    require 'views/study.php';
+    require 'views/road.php';
+ }
 
 $stats->getWork();

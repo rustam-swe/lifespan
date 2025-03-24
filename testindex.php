@@ -8,25 +8,25 @@
 
   new \Router\Router()->handleForm();   
 
-  if (!isset($_POST["dob"])){
-    return;
-  }
+  // if (!isset($_POST["dob"])){
+  //   return;
+  // }
 
-  $birthday = $_POST["dob"];
+  $birthday = $_POST["dob"] ?? '2000-01-01';
 
-  $person = new \App\Person($birthday);
-  $generalInfo =  "Current date:". date('Y-m-d');
+  $person       = new \App\Person($birthday);
+  $generalInfo  =  "Current date:". date('Y-m-d');
   $generalInfo .= "<br> Age: $person->age";
 
   echo $generalInfo;
 
   $stats = new \App\Stats($person);
-  $stats->getSleep();
+  // $stats->getSleep();
 
-  new \Router\Router()->handleFamily();
+  // $stats->handleFamily();
 
   $_SESSION['birthday'] = $birthday;
 
-  new \Router\Router()->StudyRoad($person->age);
+  //$stats->StudyRoad($person->age);
 
   $stats->getWork();
