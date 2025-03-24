@@ -1,25 +1,10 @@
 <?php
     declare(strict_types=1);
-    use App\Controllers\TestWork;
-    use App\Controllers\Work;
-    use \App\Person;
-    $work = new Work();
-    $person = new Person($_SESSION['birthday']);
-    $interval=$person->period;
-    $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
-    $hoursByPeriods = [          
-        // '18' => 4,       
-        // '25' => 8,       
-        // '55' => 7,       
-        // '65' => 5       
 
-        '18-24' => 4,
-        '25-54' => 8,
-        '55-64' => 7,
-        '65-75' => 5
-    ];
-    echo "\n\nAgework: ".$interval->y;
-    $result=$work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+    $work = new \App\Controllers\Work();
+    $person = new \App\Person($_SESSION['birthday']);
+    $interval = $person->period->y;
+    $result=$work->workstat($interval);
 ?>
 
 <!DOCTYPE html>

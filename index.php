@@ -23,9 +23,9 @@ echo $generalInfo;
 $stats = new \App\Stats($person);
 $stats->getSleep();
 
-  require 'views/family.php';
+require 'views/family.php';
 
-  $_SESSION['birthday'] = $birthday;
+$_SESSION['birthday'] = $birthday;
 
 if($person->age > 7) {
    require 'views/study.php';
