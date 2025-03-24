@@ -30,8 +30,8 @@
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
-                "Done" => $totalHours,
-                "Left" => $leftWorkHours,
+                "Done" => round($totalHours, 2),
+                "Left" => round($leftWorkHours, 2),
                 "avgTotal" => $avgWorkSpan,
             ];
         }
