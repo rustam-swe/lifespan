@@ -4,7 +4,7 @@ declare(strict_types=1);
 use App\Controllers\Road;
 use App\Person;
 
-$age = new Person('2005-03-14')->age;
+$age = $person->age;
 $road = new Road();
 $annualSpent = 365;
 $hoursByPeriods = [
