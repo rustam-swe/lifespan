@@ -11,19 +11,22 @@ $currentDate = date('Y-m-d');
 require 'views/form.php';
 
 if (!isset($_POST["dob"])){
+  
   return;
 }
+$birthday = $_POST["dob"];
 
-  $birthday = $_POST["dob"];
 
-  require 'views/sleep.php';
+require 'views/sleep.php';
 
 $age = 75 ; // FIXME: Calculate the actual age 
 
 $_SESSION['age'] = $age;
 
 if($age > 7) {
+  var_dump($age);
    require 'views/study.php';
+
    require 'views/road.php';
 }
 

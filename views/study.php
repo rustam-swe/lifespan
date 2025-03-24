@@ -2,11 +2,12 @@
     declare(strict_types=1);
 
     use App\Controllers\Study;
-
+    
     $age = $_SESSION['age']??"No age selected";
-    $birthDate = DateTime::createFromFormat('d.m.Y', );
-    $now = new DateTime();
     var_dump($age);
+    $birthDate = DateTime::createFromFormat('d.m.Y',$birthday);
+    $now = new DateTime();
+    
 
 
     if ($birthDate) {
