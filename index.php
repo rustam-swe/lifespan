@@ -8,11 +8,11 @@ require 'vendor/autoload.php';
 
 require 'views/form.php';   
 
- if (!isset($_POST["dob"])){
+if (!isset($_POST["dob"])){
    return;
- }
+}
 
- $birthday = $_POST["dob"]?? '2000-01-01';
+$birthday = $_POST['dob'];
 
  $person       = new \App\Person($birthday);
  $generalInfo  =  "Current date:". date('Y-m-d');
@@ -21,7 +21,7 @@ require 'views/form.php';
  echo $generalInfo;
 
  $stats = new \App\Stats($person);
- $stats->getSleep();
+$stats->getSleep();
 
  require 'views/family.php';
 

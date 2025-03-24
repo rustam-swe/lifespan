@@ -11,7 +11,7 @@ class Person {
 
   public readonly DateTime     $dob;
   public readonly int          $age;
-  public readonly DateInterval $period;  // FIXME : ' $period ' should be renamed
+  public readonly DateInterval $period; // FIXME: Give an appropriate name 
   
   public function __construct(string $birthday) {
     $this->dob    = new DateTime($birthday);
