@@ -3,7 +3,7 @@
 
     $work = new \App\Controllers\Work();
     $person = new \App\Person($_SESSION['birthday']);
-    $interval = $person->period->y;
+    $interval = $person->period;
     $result=$work->workstat($interval);
 ?>
 

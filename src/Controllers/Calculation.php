@@ -8,7 +8,7 @@
         public function calculateHours($interval, $hoursByPeriods, $annualSpent) {
             
             $age = $interval->y;
-            $additionalDays = $interval->m * 21 + $interval->d;             // 21 work days in a month
+            $additionalDays = $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
             $totalHours = 0;
             $avgWorkSpan = 0;
             $additionalDayHours = 0;
