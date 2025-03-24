@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+    declare(strict_types=1);
 
     namespace App\Controllers;
 
@@ -8,7 +8,7 @@ declare(strict_types=1);
         public function calculateHours($interval, $hoursByPeriods, $annualSpent) {
             
             $age = $interval->y;
-            $additionalDays = $interval->m * 21 + $interval->d;             // 21 work days in a month
+            $additionalDays = $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
             $totalHours = 0;
             $avgWorkSpan = 0;
             $additionalDayHours = 0;
@@ -30,8 +30,8 @@ declare(strict_types=1);
             $leftWorkHours = $avgWorkSpan - $totalHours;
             
             return [
-                "Done" => $totalHours,
-                "Left" => $leftWorkHours,
+                "Done" => round($totalHours, 2),
+                "Left" => round($leftWorkHours, 2),
                 "avgTotal" => $avgWorkSpan,
             ];
         }
