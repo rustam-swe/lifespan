@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    namespace App\Controllers;
+    namespace Core;
 
     class Calculation implements \Interfaces\Interfaces {
         

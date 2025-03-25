@@ -14,8 +14,8 @@ if (!isset($_POST["dob"])){
 
 $birthday = $_POST['dob'];
 
- $person       = new \App\Person($birthday);
- $generalInfo  =  "Current date:". date('Y-m-d');
+ $person = new \App\Person($birthday);
+ $generalInfo =  "Current date:". date('Y-m-d');
  $generalInfo .= "<br> Age: $person->age";
 
  echo $generalInfo;

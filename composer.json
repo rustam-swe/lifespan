@@ -5,7 +5,8 @@
         "psr-4": {
             "App\\": "./src/",
             "Interfaces\\":"./Interfaces/",
-            "Router\\":"./"
+            "Router\\":"./",
+            "Core\\":"./Core/"
         }
     },
     "require-dev": {
