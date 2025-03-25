@@ -18,4 +18,3 @@ class Road {
     return $road->calculateHours($interval, $hoursByPeriods, $annualSpent);
   }
 }
-

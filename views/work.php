@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Your life stats</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="text-primary">Work</h2>
-        <div class="mb-3">
-            <label for="avgTotal" class="form-label">Average total work hours:</label>
-            <input type="text" id="avgTotal" name="avgTotal" class="form-control" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
-        </div>
-        <div class="mb-3">
-            <label for="Done" class="form-label">You worked:</label>
-            <input type="text" id="Done" name="Done" class="form-control" value="<?php echo ' '.$result["Done"].' hours'; ?>" readonly>
-        </div>
-        <div class="mb-3">
-            <label for="leftWork" class="form-label">You can work another:</label>
-            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["Left"]<=0) ? 'Thanks for your service 🫡' : $result['Left'].' hours' ?>" readonly>
-        </div>
+<?php
+// Router.php
+?>
+
+<hr>
+<h2>Work Time</h2>
+<?php if (!$person || !isset($person->age) || $person->age < 18): ?>
+    <p class="error-message">You must be at least 18 years old to see work statistics.</p>
+<?php else: ?>
+    <div class="mb-3">
+        <label for="avgTotal">Average total work hours:</label>
+        <input type="text" id="avgTotal" name="avgTotal" class="form-control" value="<?php echo ' ' . $workData['avgTotal'] . ' hours'; ?>" readonly>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+    <div class="mb-3">
+        <label for="workHours">You worked:</label>
+        <input type="text" id="workHours" name="workHours" class="form-control" value="<?php echo ' ' . $workData['Done'] . ' hours'; ?>" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="leftWork">You can work another:</label>
+        <input type="text" id="leftWork" name="leftWork" class="form-control" value="<?php echo ' ' . $workData['Left'] . ' hours'; ?>" readonly>
+    </div>
+<?php endif; ?>
