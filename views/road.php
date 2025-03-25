@@ -15,7 +15,6 @@ $hoursByPeriods = [
 ];
 $result = $road->travelTime($age, $hoursByPeriods, $annualSpent);
 
-
 ?>
 
 <!DOCTYPE html>
