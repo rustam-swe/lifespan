@@ -8,15 +8,18 @@ class Stats {
   }
 
   public function allStats() {
-    //$this->getSleep();
+    $this->getSleep();
     //$this->getFamily();
     //$this->getStudy($this->person->age);
     $this->getRoad();
     $this->getWork();
   }
   public function getSleep() {
-    $birthday = $this->person->dob->format('y-m-d');
+    $sleepObj = new \App\Controllers\Sleep();   
+    $interval = $this->person->period;
+    $result   = $sleepObj->sleepstat($interval);
     require 'views/sleep.php';
+
   }
 
   public function getWork(){
