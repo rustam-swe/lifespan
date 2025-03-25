@@ -34,8 +34,14 @@ class Stats {
   
   public static function getStudy($age): void {
     if($age > 7) {
-        require 'views/study.php';
-     }
+
+    $study    = new \App\Controllers\Study();
+    $interval = $person->period;
+    $result   = $study->studyStat($interval);
+
+    require 'views/study.php';
+
+    }
   }
 
   public static function getRoad($age): void {

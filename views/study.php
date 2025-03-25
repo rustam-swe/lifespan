@@ -1,12 +1,3 @@
-<?php
-    declare(strict_types=1);
-
-    $study    = new \App\Controllers\Study();
-    $person   = new \App\Person($_SESSION['birthday']);
-    $interval = $person->period;
-    $result   = $study->studyStat($interval);
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
