@@ -4,8 +4,8 @@
 
     class Work{
         public function workstat($interval) {
-            $work = new \App\Controllers\Calculation();
-            $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
+            $work           = new \Core\Calculation();
+            $annualSpent    = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
             $hoursByPeriods = [          
                 // '18' => 4,       
                 // '25' => 8,       
@@ -38,12 +38,7 @@
                 
                 '65-75' => 5
             ];
-            $result=$work->calculateHours($interval, $hoursByPeriods, $annualSpent);
-            return [
-                "avgTotal" => $result["avgTotal"],
-                "Done" => $result["Done"],
-                "Left" => $result["Left"]
-            ];
-        }
+            return $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+        } 
     }
 ?>

@@ -1,32 +1,13 @@
 <?php
   declare(strict_types=1);
 
-  session_start(); 
-
   require 'vendor/autoload.php';
 
+  $birthday     = (new \Router\Router())->handleForm() ?? '2020-01-01';
+  $person       = new \Core\Person($birthday);
 
-  new \Router\Router()->handleForm();   
+  (new \App\Stats($person))->allStats();
 
-  if (!isset($_POST["dob"])){
-    return;
-  }
+ ?>
 
-  $birthday = $_POST["dob"];
 
-  $person = new \App\Person($birthday);
-  $generalInfo =  "Current date:". date('Y-m-d');
-  $generalInfo .= "<br> Age: $person->age";
-
-  echo $generalInfo;
-
-  $stats = new \App\Stats($person);
-  $stats->getSleep();
-
-  new \Router\Router()->handleFamily();
-
-  $_SESSION['birthday'] = $birthday;
-
-  new \Router\Router()->StudyRoad($person->age);
-
-  $stats->getWork();
