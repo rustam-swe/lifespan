@@ -10,7 +10,7 @@ $router = new \Router\Router();
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // if (BASE_PATH !== '/' && strpos($path, BASE_PATH) === 0) {
-     // $path = substr($path, strlen(BASE_PATH));
+//     $path = substr($path, strlen(BASE_PATH));
 // }
 
 if ($path === '' || $path === '/') {
