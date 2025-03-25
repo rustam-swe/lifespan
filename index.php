@@ -34,8 +34,3 @@ $stats->getSleep();
  }
 
 $stats->getWork();
-
-
-
-$_SESSION['years_for_eating'] = $birthday;
-require 'views/eating.php';

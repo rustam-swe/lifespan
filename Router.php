@@ -5,18 +5,15 @@ namespace Router;
 
 class Router {
 
-  public static function handleForm(): void {
+  public function handleForm() {
+
     require 'views/form.php'; 
+
+    if (!isset($_POST["dob"])){
+      return;
+    }
+    
+    return $_POST['dob'];
   }
 
-  public static function handleFamily(): void {
-    require 'views/family.php'; 
-  }
-  
-  public static function StudyRoad($age): void {
-    if($age > 7) {
-        require 'views/study.php';
-        require 'views/road.php';
-     }
-  }
 }
