@@ -20,11 +20,25 @@ class Sleep{
             '65-75' => 7
         ];
         $result = $calculator->calculateHours($interval, $hoursByPeriod, $annualSpent);
+        
+        $sleptDays = $result["Done"] / 24;
+        $remainingDays = $result["Left"] / 24;
+        $totalSleepDays = $result["avgTotal"] / 24;
+
+        $sleptYears = $sleptDays/365;
+        $remainingYears = $remainingDays/365;
+        $totalSleepYears = $totalSleepDays/365;
     
-        $sleptYears = ($result["Done"] / 24)/365;
-        $remainingYears = ($result["Left"] / 24)/365;
-        $totalSleepYears = ($result["avgTotal"] / 24)/365;
-    
-        return ['hours' => round($result["Done"]), 'years' => round($sleptYears, 2), 'remainingHours' => round($result["Left"]), 'remainingYears' => round($remainingYears, 2),'totalSleepHours' => round($result["avgTotal"]), 'totalSleepYears' => round($totalSleepYears)];
+        return [
+            'hours' => round($result["Done"]), 
+            'days' => round($sleptDays), 
+            'years' => round($sleptYears, 2), 
+            'remainingHours' => round($result["Left"]), 
+            'remainingDays' => round($remainingDays), 
+            'remainingYears' => round($remainingYears, 2),
+            'totalSleepHours' => round($result["avgTotal"]), 
+            'totalSleepDays' => round($totalSleepDays), 
+            'totalSleepYears' => round($totalSleepYears)];
+
     }    
 }
