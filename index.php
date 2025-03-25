@@ -1,36 +1,35 @@
 <?php
-declare(strict_types=1);
+  declare(strict_types=1);
 
-session_start(); 
+  session_start(); 
 
 require 'vendor/autoload.php';
 
-define('AVERAGE_LIFE_DURATION', 75);
-$currentDate = date('Y-m-d');
 
-require 'views/form.php';
+require 'views/form.php';   
 
 if (!isset($_POST["dob"])){
-  
-  
-  return;
-}
-$birthday = $_POST["dob"];
-
-require 'views/sleep.php';
-
-$age = 60 ; // FIXME: Calculate the actual age 
-
-$_SESSION['age'] = $age;
-
-if($age > 7) {
-  var_dump($age);
-   require 'views/study.php';
-
-
-   require 'views/road.php';
+   return;
 }
 
-if($age >= 18){
-  require 'views/work.php';
-}
+$birthday = $_POST['dob'];
+
+ $person = new \App\Person($birthday);
+ $generalInfo =  "Current date:". date('Y-m-d');
+ $generalInfo .= "<br> Age: $person->age";
+
+ echo $generalInfo;
+
+ $stats = new \App\Stats($person);
+$stats->getSleep();
+
+ require 'views/family.php';
+
+ $_SESSION['birthday'] = $birthday;
+
+ if($person->age > 7) {
+    require 'views/study.php';
+    require 'views/road.php';
+ }
+
+$stats->getWork();

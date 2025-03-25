@@ -1,39 +1,49 @@
 <?php
     declare(strict_types=1);
-
     namespace App\Controllers;
 
-    class Work implements \Interfaces\Interface {
-        
-        public function workHours(int $age, $hoursByPeriods) {
-            
-            $workingDays = 5 * 50;
-            $totalHours  = 0;
+    class Work{
+        public function workstat($interval) {
+            $work = new \App\Controllers\Calculation();
+            $annualSpent = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
+            $hoursByPeriods = [          
+                // '18' => 4,       
+                // '25' => 8,       
+                // '55' => 7,       
+                // '65' => 5       
 
-            
-            
+                '18-24' => 4,
+                '25-54' => 8,
+                '55-64' => 7,
 
-                foreach ($hoursByPeriods as $range => $hoursPerDay) {
 
-                    [$periodStart, $periodEnd] = explode('-', $range . '-');
-                    
-                    if ($age > $periodStart) {
-                        $years      = min($age, $periodEnd) - $periodStart;
-                        $totalHours += $workingDays * $years * $hoursPerDay;
-                }
-            }
-            
-            $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
-            $leftWorkHours = $avgWorkSpan - $totalHours;
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                '65-75' => 5
+            ];
+            $result=$work->calculateHours($interval, $hoursByPeriods, $annualSpent);
             return [
-                "worked"   => $totalHours,
-                "leftWork" => $leftWorkHours,
-                "avgTotal" => $avgWorkSpan
+                "avgTotal" => $result["avgTotal"],
+                "Done" => $result["Done"],
+                "Left" => $result["Left"]
             ];
         }
     }
-
 ?>
-    
-
