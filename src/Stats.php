@@ -8,10 +8,10 @@ class Stats {
   }
 
   public function allStats() {
-    $this->getSleep();
-    $this->getFamily();
-    $this->getStudy($this->person->age);
-    $this->getRoad($this->person->age);
+    //$this->getSleep();
+    //$this->getFamily();
+    //$this->getStudy($this->person->age);
+    //$this->getRoad($this->person->age);
     $this->getWork();
   }
   public function getSleep() {

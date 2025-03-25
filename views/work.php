@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <title>Work_Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Your life stats</title>
 </head>
 <body>
-<hr>
-<h2>Work</h2>
-    <label for="avgTotal">Average total work hours :</label>
-    <input type="text" id="avgTotal" name="avgTotal" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
-    <br><label for="Done">You worked :</label>
-    <input style="margin-left: 111px;" type="text" id="Done" name="Done" value="<?php echo ' '.$result["Done"].' hours'; ?>" readonly>
-    <br><label for="leftWork">You can work another :</label>
-    <input style="margin-left: 28.5px;" type="text" id="Left" name="Left" value="<?php echo ' '.$result["Left"].' hours'; ?>" readonly>
+    <div class="container mt-5">
+        <h2 class="text-primary">Work</h2>
+        <div class="mb-3">
+            <label for="avgTotal" class="form-label">Average total work hours:</label>
+            <input type="text" id="avgTotal" name="avgTotal" class="form-control" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="Done" class="form-label">You worked:</label>
+            <input type="text" id="Done" name="Done" class="form-control" value="<?php echo ' '.$result["Done"].' hours'; ?>" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="leftWork" class="form-label">You can work another:</label>
+            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ' '.$result["Left"].' hours'; ?>" readonly>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
