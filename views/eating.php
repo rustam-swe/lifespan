@@ -1,15 +1,3 @@
-<?php
- 
-use App\Controllers\Eating;
-
-    $birthday = $_SESSION['years_for_eating']??"No age selected";
-    $age = $_SESSION['age'];
-
-    $totalEating = new Eating();
-    $totalEatingDays = $totalEating->eatingCalculate($birthday, $age);
-   
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +8,16 @@ use App\Controllers\Eating;
 </head>
 <body>
    <hr>
-   <h1>Eating Time</h1>
+    <h1>Eating Time</h1>
 
-   <?php
-       echo "<div class='alert alert-success mt-3'> The time you spend eating in your lifetime: <b>" . $totalEatingDays . "</b> day.</div>";
-   ?>
+    <div class='mt-4'>
+
+
+      <input type='text' id='day' name='day' class='form-control'
+      value="<?php echo "The time you spend eating in your life time: " . $result_eating['Done'] . "hours"; ?>" readonly>
+
+    </div>
+
 
 </body>
 </html>

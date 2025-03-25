@@ -8,15 +8,23 @@ class Stats {
   }
 
   public function allStats() {
-    //$this->getSleep();
+    $this->getSleep();
     //$this->getFamily();
     //$this->getStudy($this->person->age);
-    //$this->getRoad($this->person->age);
+    echo '<pre>';
+    print_r($this->getAllActivitiesTotalSpentTime());
+    echo '</pre>';
+    $this->getRoad();
     $this->getWork();
+    $this->getEating();
   }
   public function getSleep() {
-    $birthday = $this->person->dob->format('y-m-d');
+    $sleepObj = new \App\Controllers\Sleep();   
+    $interval = $this->person->period;
+    $result   = $sleepObj->sleepstat($interval);
+
     require 'views/sleep.php';
+
   }
 
   public function getWork(){
@@ -38,9 +46,55 @@ class Stats {
      }
   }
 
-  public static function getRoad($age): void {
-    if($age > 7) {
-        require 'views/road.php';
+  public function getRoad() {
+    if($this->person->age > 7) {
+      $road     = new \App\Controllers\Road();
+      $interval = $this->person->period;
+      $result   = $road->roadStats($interval);
+      require 'views/road.php';
      }
+  }
+
+  public function getAllActivitiesTotalSpentTime(){
+    $sleepObj = new \App\Controllers\Sleep();   
+    $interval = $this->person->period;
+    $result   = $sleepObj->sleepstat($interval);
+
+      $work     = new \App\Controllers\Work();
+    $workTime   = $work->workstat($interval);
+
+ $road     = new \App\Controllers\Road();
+      $roadTime   = $road->roadStats($interval);
+
+      $total = $result['hours'] + $workTime['Done'] + $roadTime['Done'];
+
+      $totalYears = $total / 24 / 365;
+
+      $pastRealLifeYears = $this->person->age - $totalYears;
+
+
+      $remainLivingYears = \Core\Person::AVERAGE_LIFE_DURATION - $this->person->age;
+      $remainActivityHours = $result['remainingHours'] + $workTime['Left'] + $roadTime['Left'];
+      $remainActivityYears = $remainActivityHours / 24 / 365;
+
+      $remainRealLifeYears = $remainLivingYears - $remainActivityYears;
+      
+      return [
+        'pastActivityHours' => $total,
+        'pastActivityYears' => $totalYears,
+        'age' => $this->person->age,
+        'remainLivingYears' => $remainLivingYears,
+        'pastRealLifeYears' => $pastRealLifeYears,
+        'remainRealLifeYears' => $remainRealLifeYears,
+        'remainActivityYears' => $remainActivityYears
+      ];
+  }
+
+
+  public function getEating(){
+    $eating        = new \App\Controllers\Eating();
+    $interval      = $this->person->period;
+    $result_eating = $eating->eatingCalculate($interval);
+    require 'views/eating.php';
   }
 }
