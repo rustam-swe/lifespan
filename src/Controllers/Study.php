@@ -3,11 +3,11 @@
 
     namespace App\Controllers;
 
-    class Study implements \Interfaces\StudyInterface {
+    class Study implements \Interfaces\Interfaces {
         
-        public function studyHours($age, $hoursByPeriods) {
+        public function calculateHours($age, $hoursByPeriods, $studyDays) {
             
-            $studyDays = 5 * 37;//**** */
+            
             $totalHours  = 0;
 
         

@@ -16,7 +16,7 @@
     } else {
         $hoursLived = 0;
     }
-
+    $studyDays = 5 * 37;//**** */
     $hoursByPeriods = [
         '52560-87600'  => 4,
         '96360-122640' => 6,  
@@ -25,7 +25,7 @@
     ];
     
 
-    $result = (new Study())->studyHours($hoursLived, $hoursByPeriods);
+    $result = (new Study())->calculateHours($hoursLived, $hoursByPeriods, $studyDays);
 ?>
 
 
