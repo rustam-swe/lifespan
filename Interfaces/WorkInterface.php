@@ -1,9 +1,0 @@
-<?php
-    declare(strict_types=1);
-
-    namespace Interfaces;
-
-    interface WorkInterface {
-        public function workHours(int $age, $hoursByPeriods);
-    }
-?>

@@ -3,13 +3,14 @@
 
     namespace App\Controllers;
 
-    class Work implements \Interfaces\WorkInterface {
+    class Work implements \Interfaces\Interface {
         
         public function workHours(int $age, $hoursByPeriods) {
             
             $workingDays = 5 * 50;
             $totalHours  = 0;
 
+            
             
 
                 foreach ($hoursByPeriods as $range => $hoursPerDay) {
@@ -21,7 +22,6 @@
                         $totalHours += $workingDays * $years * $hoursPerDay;
                 }
             }
-            
             
             $avgWorkSpan   = $workingDays * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
             $leftWorkHours = $avgWorkSpan - $totalHours;

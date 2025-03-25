@@ -12,10 +12,10 @@ require 'views/form.php';
 
 if (!isset($_POST["dob"])){
   
+  
   return;
 }
 $birthday = $_POST["dob"];
-
 
 require 'views/sleep.php';
 
@@ -26,6 +26,7 @@ $_SESSION['age'] = $age;
 if($age > 7) {
   var_dump($age);
    require 'views/study.php';
+
 
    require 'views/road.php';
 }

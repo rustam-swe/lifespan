@@ -1,18 +1,10 @@
 <?php
     declare(strict_types=1);
 
-    use App\Controllers\Work;
-
-    $age = $_SESSION['age']??"No age selected";
-
-    $hoursByPeriods = [
-        '18-24' => 4,
-        '25-54' => 8,
-        '55-64' => 7,
-        '65-75' => 5
-    ];
-
-    $result = (new Work())->workHours($age, $hoursByPeriods);
+    $work = new \App\Controllers\Work();
+    $person = new \App\Person($_SESSION['birthday']);
+    $interval = $person->period;
+    $result=$work->workstat($interval);
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +12,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/styles.css">
     <title>Work_Page</title>
 </head>
 <body>
 <hr>
 <h2>Work</h2>
     <label for="avgTotal">Average total work hours :</label>
-    <input type="text" id="avgWork" name="avgWork" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
-    <br><label for="workHours">You worked :</label>
-    <input type="text" id="workHours" name="workHours" value="<?php echo ' '.$result["worked"].' hours'; ?>" readonly>
+    <input type="text" id="avgTotal" name="avgTotal" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
+    <br><label for="Done">You worked :</label>
+    <input style="margin-left: 111px;" type="text" id="Done" name="Done" value="<?php echo ' '.$result["Done"].' hours'; ?>" readonly>
     <br><label for="leftWork">You can work another :</label>
-    <input type="text" id="leftWork" name="leftWork" value="<?php echo ' '.$result["leftWork"].' hours'; ?>" readonly>
+    <input style="margin-left: 28.5px;" type="text" id="Left" name="Left" value="<?php echo ' '.$result["Left"].' hours'; ?>" readonly>
 </body>
 </html>
