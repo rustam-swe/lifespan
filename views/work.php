@@ -19,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label for="leftWork" class="form-label">You can work another:</label>
-            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ' '.$result["Left"].' hours'; ?>" readonly>
+            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["Left"]<=0) ? 'Thanks for your service 🫡' : $result['Left'].' hours' ?>" readonly>
         </div>
     </div>
 
