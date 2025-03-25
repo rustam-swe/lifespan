@@ -7,7 +7,3 @@
   $person       = new \Core\Person($birthday);
 
   (new \App\Stats($person))->allStats();
-
- ?>
-
-

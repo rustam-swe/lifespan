@@ -1,10 +1,4 @@
-<?php
-$sleepObj = new \App\Controllers\Sleep();   
-$person   = new \App\Person($birthday);
-$interval = $person->period;
-$result   = $sleepObj->sleepstat($interval);
-?>
-<h2>Slept</h2>
-<label>Total Slept: <input type="text" value=" <?= $result['hours'] ?> hours or <?= $result['years'] ?> years." readonly></label><br><br>
-<label>Remaining Sleep: <input type="text" value=" <?= $result['remainingHours'] ?> hours or <?= $result['remainingYears'] ?> years." readonly></label><br><br>
-<label>Common Sleeping Bear: <input type="text" value=" <?= $result['totalSleepHours'] ?> hours or <?= $result['totalSleepYears'] ?> years." readonly></label><br><br>
+<h2>Sleep</h2>
+<label>Total sleeping time: <input type="text" value=" <?= $result['totalSleepYears'] ?> years or <?= $result['totalSleepDays'] ?> days or <?= $result['totalSleepHours'] ?> hours." readonly></label><br><br>
+<label>You slept: <input type="text" value=" <?= $result['years'] ?> years or <?= $result['days'] ?> days or <?= $result['hours'] ?> hours." readonly></label><br><br>
+<label>Remaining sleep time: <input type="text" value=" <?= $result['remainingYears'] ?> years or <?= $result['remainingDays'] ?> days or <?= $result['remainingHours'] ?> hours." readonly></label><br><br>
