@@ -11,7 +11,7 @@ class Stats {
     //$this->getSleep();
     //$this->getFamily();
     //$this->getStudy($this->person->age);
-    //$this->getRoad($this->person->age);
+    $this->getRoad();
     $this->getWork();
   }
   public function getSleep() {
@@ -38,9 +38,12 @@ class Stats {
      }
   }
 
-  public static function getRoad($age): void {
-    if($age > 7) {
-        require 'views/road.php';
+  public function getRoad() {
+    if($this->person->age > 7) {
+      $road     = new \App\Controllers\Road();
+      $interval = $this->person->period;
+      $result   = $road->roadStats($interval);
+      require 'views/road.php';
      }
   }
 }
