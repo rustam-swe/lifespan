@@ -1,0 +1,56 @@
+/* Custom Styles for Enhanced Page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.container {
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.mt-5 {
+    margin-top: 40px;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
