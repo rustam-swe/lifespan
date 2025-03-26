@@ -16,6 +16,7 @@ class Stats {
     echo '</pre>';
     $this->getRoad();
     $this->getWork();
+    $this->getEating();
   }
   public function getSleep() {
     $sleepObj = new \App\Controllers\Sleep();   
@@ -90,4 +91,10 @@ class Stats {
   }
 
 
+  public function getEating(){
+    $eating        = new \App\Controllers\Eating();
+    $interval      = $this->person->period;
+    $result_eating = $eating->eatingCalculate($interval);
+    require 'views/eating.php';
+  }
 }
