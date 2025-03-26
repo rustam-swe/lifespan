@@ -5,8 +5,8 @@ namespace App\Controllers;
 
 class Work {
     public function workstat(\DateInterval $interval): array {
-        $calculator = new \Core\Calculation();
-        $annualSpent = 365;
+        $work = new \Core\Calculation();
+        $annualSpent = 250;
         $hoursByPeriods = [
             '18-24' => 4,
             '25-54' => 8,
@@ -22,7 +22,7 @@ class Work {
             'DoneYears' =>round($result['Done'] / 24 / 365, 2),
             'LeftHours' => $result['Left'],
             'LeftDays' => round($result['Left'] / 24, 2),
-            'LeftYears' => round($result['Left'] / 24 / 365,),
+            'LeftYears' => round($result['Left'] / 24 / 365, 2),
             'avgTotalHours' => $result['avgTotal'],
             'avgTotalDays' => round($result['avgTotal'] / 24, 2),
             'avgTotalYears' => round($result['avgTotal'] / 24 / 365, 2)
