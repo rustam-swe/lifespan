@@ -9,11 +9,7 @@
             $study = new \Core\Calculation();
             $annualSpent = 230;             // 5 hours per day for 43 weeks, rest of the days are holidays and etc day-offs
             $hoursByPeriods = [          
-                // '18' => 4,       
-                // '25' => 8,       
-                // '55' => 7,       
-                // '65' => 5       
-
+                
                 '7-11' => 4,
                 '12-14' => 6,
                 '15-18' => 7,
