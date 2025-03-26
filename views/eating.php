@@ -13,8 +13,7 @@
             color: #007bff;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
             padding: 10px;
-            border-radius: 10px;
-            
+            border-radius: 10px; 
         }
     </style>  
 
@@ -26,8 +25,12 @@
             <hr style="color: red; height: 5px;">
 
             <p style="color: black; font-size: 25px; font-weight: bold;">
-              <?php echo "The time you spend eating in your life time: " . round($result_eating['Done']) . " Hours"; ?>
-            </p>
+              <?php 
+                echo "The time you spend eating in your life time: " . $result_eating['Done'] . " Hours<br>"; 
+                echo "The time you spend eating in your life time: " . round($result_eating['Done']/24) . " ~Day<br>"; 
+                echo "The time you spend eating in your life time: " . round($result_eating['Done']/24/365) . " ~Years"; 
+              ?>
+            </p>     
       </div>
 
 </body>
