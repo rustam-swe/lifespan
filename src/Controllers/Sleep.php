@@ -5,8 +5,7 @@ namespace App\Controllers;
 
 date_default_timezone_set("Asia/Tashkent");
 
-class Sleep{
-    
+class Sleep {
     public function sleepstat($interval) {
         $calculator = new \Core\Calculation();
         $annualSpent = 365;
@@ -28,20 +27,20 @@ class Sleep{
         $remainingDays = $result["Left"] / 24;
         $totalSleepDays = $result["avgTotal"] / 24;
 
-        $sleptYears = $sleptDays/365;
-        $remainingYears = $remainingDays/365;
-        $totalSleepYears = $totalSleepDays/365;
-    
-        return [
-            'hours' => round($result["Done"]), 
-            'days' => round($sleptDays), 
-            'years' => round($sleptYears, 2), 
-            'remainingHours' => round($result["Left"]), 
-            'remainingDays' => round($remainingDays), 
-            'remainingYears' => round($remainingYears, 2),
-            'totalSleepHours' => round($result["avgTotal"]), 
-            'totalSleepDays' => round($totalSleepDays), 
-            'totalSleepYears' => round($totalSleepYears,2)];
+        $sleptYears = $sleptDays / 365;
+        $remainingYears = $remainingDays / 365;
+        $totalSleepYears = $totalSleepDays / 365;
 
-    }    
+        return [
+            'hours' => round($result["Done"]),
+            'days' => round($sleptDays),
+            'years' => round($sleptYears, 2),
+            'remainingHours' => round($result["Left"]),
+            'remainingDays' => round($remainingDays),
+            'remainingYears' => round($remainingYears, 2),
+            'totalSleepHours' => round($result["avgTotal"]),
+            'totalSleepDays' => round($totalSleepDays),
+            'totalSleepYears' => round($totalSleepYears, 2)
+        ];
+    }
 }

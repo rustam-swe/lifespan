@@ -1,56 +1,137 @@
-/* Custom Styles for Enhanced Page */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
 }
 
-h2 {
-    font-weight: bold;
-    margin-top: 20px;
+.form-container, .result-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease;
 }
 
-.container {
-    border: 1px solid #dee2e6;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.form-container:hover, .result-container:hover {
+    transform: translateY(-5px);
 }
 
-.form-label {
-    font-weight: 600;
-    color: #495057;
+h1, h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    font-weight: 500;
+}
+
+input[type="date"], .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+input[type="date"]:focus, .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
 .form-control {
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
 }
 
-input[readonly] {
-    background-color: #e9ecef;
-    color: #495057;
-    border: 1px solid #dee2e6;
+.form-control:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.mt-5 {
-    margin-top: 40px;
-}
-
-.text-primary {
-    color: #007bff !important;
-}
-
-button {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px 20px;
+.form-container button, .result-container button {
+    width: 100%;
+    padding: 0.75rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+.form-container button:hover, .result-container button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #0072ff, #00c6ff);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+hr {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 1.5rem 0;
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    font-weight: 500;
+}
+
+.back-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.back-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.stat-card i {
+    font-size: 1.5rem;
+    color: #00c6ff;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
 }
