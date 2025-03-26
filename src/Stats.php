@@ -65,7 +65,7 @@ class Stats {
  $road     = new \App\Controllers\Road();
       $roadTime   = $road->roadStats($interval);
 
-      $total = $result['hours'] + $workTime['Done'] + $roadTime['Done'];
+      $total = $result['hours'] + $workTime['DoneHours'] + $roadTime['Done'];
 
       $totalYears = $total / 24 / 365;
 
@@ -73,7 +73,7 @@ class Stats {
 
 
       $remainLivingYears = \Core\Person::AVERAGE_LIFE_DURATION - $this->person->age;
-      $remainActivityHours = $result['remainingHours'] + $workTime['Left'] + $roadTime['Left'];
+      $remainActivityHours = $result['remainingHours'] + $workTime['LeftHours'] + $roadTime['Left'];
       $remainActivityYears = $remainActivityHours / 24 / 365;
 
       $remainRealLifeYears = $remainLivingYears - $remainActivityYears;

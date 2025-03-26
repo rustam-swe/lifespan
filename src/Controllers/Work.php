@@ -17,7 +17,18 @@
                 '55-64' => 7,
                 '65-75' => 5
             ];
-            return $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+            $result = $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+            return [
+                'DoneHours' => $result['Done'],
+                'DoneDays' => round($result['Done'] / 24, 2),
+                'DoneYears' =>round($result['Done'] / 24 / 365, 2),
+                'LeftHours' => $result['Left'],
+                'LeftDays' => round($result['Left'] / 24, 2),
+                'LeftYears' => round($result['Left'] / 24 / 365,),
+                'avgTotalHours' => $result['avgTotal'],
+                'avgTotalDays' => round($result['avgTotal'] / 24, 2),
+                'avgTotalYears' => round($result['avgTotal'] / 24 / 365, 2)
+            ];
         } 
     }
 ?>

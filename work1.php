@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="leftWork" class="form-label">You can work another:</label>
-            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["LeftHours"]<=0) ? 'Thanks for your service 🫡' : 
+            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["Left"]<=0) ? 'Thanks for your service 🫡' : 
                 ($result['LeftHours'].' hours,  '.
                 $result["LeftDays"] . ($result["LeftDays"] > 1 ? ' days,  ' : ' day,  ').
                 $result["LeftYears"]. ($result["LeftYears"] > 1 ? ' years' : ' year')) ?>" readonly>
