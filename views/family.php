@@ -1,14 +1,17 @@
 <?php
-// Router.php
 ?>
 
 <hr>
 <h2>Family Time</h2>
-<div class="mb-3">
-    <label for="familyHours">Time spent with family:</label>
-    <input type="text" id="familyHours" name="familyHours" class="form-control" value="<?php echo ' ' . $familyTime['hours'] . ' hours'; ?>" readonly>
+<div class="stat-card">
+    <i class="fas fa-users"></i>
+    <p>Total family time: <?php echo isset($familyTime['totalFamilyTime']) ? $familyTime['totalFamilyTime'] . ' hours' : 'N/A'; ?></p>
 </div>
-<div class="mb-3">
-    <label for="remainingFamilyHours">Remaining family time:</label>
-    <input type="text" id="remainingFamilyHours" name="remainingFamilyHours" class="form-control" value="<?php echo ' ' . $familyTime['remainingHours'] . ' hours'; ?>" readonly>
+<div class="stat-card">
+    <i class="fas fa-clock"></i>
+    <p>Average family time: <?php echo isset($familyTime['avgFamilyTime']) ? $familyTime['avgFamilyTime'] . ' hours' : 'N/A'; ?></p>
+</div>
+<div class="stat-card">
+    <i class="fas fa-hourglass-end"></i>
+    <p>Remaining family time: <?php echo isset($familyTime['remainingFamilyTime']) ? $familyTime['remainingFamilyTime'] . ' hours' : 'N/A'; ?></p>
 </div>

@@ -23,7 +23,7 @@ body {
     transform: translateY(-5px);
 }
 
-h2 {
+h1, h2 {
     color: #fff;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -58,7 +58,7 @@ input[type="date"]:focus, .form-control:focus {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-button {
+.form-container button, .result-container button {
     width: 100%;
     padding: 0.75rem;
     border: none;
@@ -66,10 +66,12 @@ button {
     background: linear-gradient(90deg, #00c6ff, #0072ff);
     color: #fff;
     font-weight: 600;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-button:hover {
+.form-container button:hover, .result-container button:hover {
     transform: scale(1.05);
     background: linear-gradient(90deg, #0072ff, #00c6ff);
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
@@ -105,4 +107,31 @@ hr {
     transform: scale(1.05);
     background: linear-gradient(90deg, #ff8e53, #ff6b6b);
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.stat-card i {
+    font-size: 1.5rem;
+    color: #00c6ff;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
 }

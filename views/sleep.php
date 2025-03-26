@@ -1,4 +1,13 @@
-<h2>Sleep</h2>
-<label>Total sleeping time: <input type="text" value=" <?= $result['totalSleepYears'] ?> years or <?= $result['totalSleepDays'] ?> days or <?= $result['totalSleepHours'] ?> hours." size = 28 readonly></label><br><br>
-<label>You slept: <input type="text" value=" <?= $result['years'] ?> years or <?= $result['days'] ?> days or <?= $result['hours'] ?> hours." size = 28 readonly></label><br><br>
-<label>Remaining sleep time: <input type="text" value=" <?= $result['remainingYears'] ?> years or <?= $result['remainingDays'] ?> days or <?= $result['remainingHours'] ?> hours." size = 28 readonly></label><br><br>
+<h2>Sleep Time</h2>
+<div class="stat-card">
+    <i class="fas fa-bed"></i>
+    <p>Total sleep time: <?php echo isset($sleepData['totalSleepYears']) ? $sleepData['totalSleepYears'] . ' years (' . $sleepData['totalSleepDays'] . ' days, ' . $sleepData['totalSleepHours'] . ' hours)' : 'N/A'; ?></p>
+</div>
+<div class="stat-card">
+    <i class="fas fa-moon"></i>
+    <p>Time slept: <?php echo isset($sleepData['years']) ? $sleepData['years'] . ' years (' . $sleepData['days'] . ' days, ' . $sleepData['hours'] . ' hours)' : 'N/A'; ?></p>
+</div>
+<div class="stat-card">
+    <i class="fas fa-hourglass-end"></i>
+    <p>Remaining sleep time: <?php echo isset($sleepData['remainingYears']) ? $sleepData['remainingYears'] . ' years (' . $sleepData['remainingDays'] . ' days, ' . $sleepData['remainingHours'] . ' hours)' : 'N/A'; ?></p>
+</div>

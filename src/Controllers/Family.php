@@ -4,52 +4,28 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 class Family {
-    public function calculateFamilyTime(string $birthdate): array {
-        $now = new \DateTime();
-        $birth = new \DateTime($birthdate);
-
-        if ($birth > $now) {
-            throw new \Exception("Error: Birthdate cannot be in the future!");
-        }
-
-        $person = new \Core\Person($birthdate);
-        $interval = $person->period;
-        $age = $person->age;
-        $totalDaysLived = $birth->diff($now)->days;
-        $familyDays = 0;
-        $averageLifeDuration = \Core\Person::AVERAGE_LIFE_DURATION;
-
-        
-        $familyCoefficients = [
-            '0-3'   => 0.9,
-            '4-6'   => 0.6,
-            '7-17'  => 0.4,
-            '18-22' => 0.25,
-            '23-64' => 0.3,
-            '65-75' => 0.5
-        ];
-
+    public function calculateFamilyTime(string $birthday): array {
+        $interval = (new \DateTime())->diff(new \DateTime($birthday));
+        $calculator = new \Core\Calculation();
         $annualSpent = 365;
+        $hoursByPeriods = [
+            '0-18' => 4,
+            '18-30' => 2,
+            '30-75' => 3,
+        ];
+        $result = $calculator->calculateHours($interval, $hoursByPeriods, $annualSpent);
 
-        $calculation = new \Core\Calculation();
-        $result = $calculation->calculateHours($interval, $familyCoefficients, $annualSpent);
-
-        $familyDays = $result['Done'];
-        $familyHours = $familyDays * 24;
-
-        $averageLifeDuration = \Core\Person::AVERAGE_LIFE_DURATION;
-        $remainingYears = $averageLifeDuration - $age;
-        $remainingDaysWithFamily = $remainingYears * 0.3 * 365;
-        $remainingHoursWithFamily = $remainingDaysWithFamily * 24;
-
-        $totalDaysLived = $birth->diff($now)->days;
+        $totalDays = $result['avgTotal'] / 24;
+        $familyDays = $result['Done'] / 24;
+        $remainingDays = $result['Left'] / 24;
 
         return [
-            'hours' => round($familyHours),
-            'remainingHours' => round($remainingHoursWithFamily),
-            'total_days' => $totalDaysLived,
+            'totalFamilyTime' => round($result['Done']),
+            'avgFamilyTime' => round($result['Done'] / ($interval->y > 0 ? $interval->y : 1), 2),
+            'remainingFamilyTime' => round($result['Left']),
+            'total_days' => round($totalDays),
             'family_days' => round($familyDays),
-            'remaining_days_with_family' => round($remainingDaysWithFamily),
+            'remaining_days_with_family' => round($remainingDays),
         ];
     }
 }

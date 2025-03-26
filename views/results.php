@@ -3,59 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifespan Results</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../styles/styles.css" rel="stylesheet">
+    <title>Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/styles/styles.css" rel="stylesheet">
 </head>
 <body>
-    <?php
-    $error = null;
+    <div class="result-container m-5">
+        <h1 class="text-center mb-4">Your Lifespan Statistics</h1>
+        <hr>
 
-    if (!$birthday) {
-        $error = "Please enter your date of birth first.";
-    }
-    ?>
+        <div class="px-3">
+            <?php if (isset($familyTime) && $familyTime): ?>
+                <div class="mb-4">
+                    <?php require 'family.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Family data not available.</p>
+            <?php endif; ?>
 
-    <div class="result-container">
-        <?php if ($error): ?>
-            <p class="error-message"><?php echo $error; ?></p>
+            <?php if (isset($workData) && $workData): ?>
+                <div class="mb-4">
+                    <?php require 'work.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Work data not available.</p>
+            <?php endif; ?>
+
+            <?php if (isset($sleepData) && $sleepData): ?>
+                <div class="mb-4">
+                    <?php require 'sleep.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Sleep data not available.</p>
+            <?php endif; ?>
+
+            <?php if (isset($roadData) && $roadData): ?>
+                <div class="mb-4">
+                    <?php require 'road.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Road data not available.</p>
+            <?php endif; ?>
+
+            <?php if (isset($eatingData) && $eatingData): ?>
+                <div class="mb-4">
+                    <?php require 'eating.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Eating data not available.</p>
+            <?php endif; ?>
+
+            <?php if (isset($studyData) && $studyData): ?>
+                <div class="mb-4">
+                    <?php require 'study.php'; ?>
+                </div>
+            <?php else: ?>
+                <p class="error-message mb-4">Study data not available.</p>
+            <?php endif; ?>
+
             <a href="/form" class="back-button">Back to Form</a>
-        <?php else: ?>
-            <?php if ($familyTime && isset($familyTime['hours'], $familyTime['remainingHours'])): ?>
-                <?php require 'family.php'; ?>
-            <?php else: ?>
-                <p class="error-message">Family data not available or in incorrect format.</p>
-                <?php var_dump($familyTime); // Отладка ?>
-            <?php endif; ?>
-
-            <?php if ($workData): ?>
-                <?php require 'work.php'; ?>
-            <?php else: ?>
-                <p class="error-message">Work data not available.</p>
-            <?php endif; ?>
-
-            <?php if ($sleepData): ?>
-                <?php require 'sleep.php'; ?>
-            <?php else: ?>
-                <!-- <p class="error-message">Sleep data not available (under development).</p> -->
-            <?php endif; ?>
-
-            <?php if ($roadData): ?>
-                <?php require 'road.php'; ?>
-            <?php else: ?>
-                <p class="error-message">Road data not available.</p>
-            <?php endif; ?>
-
-            <?php if ($studyData): ?>
-                <?php require 'study.php'; ?>
-            <?php else: ?>
-                <p class="error-message">Study data not available.</p>
-            <?php endif; ?>
-
-            <a href="/form" class="back-button">Back to Form</a>
-        <?php endif; ?>
+        </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

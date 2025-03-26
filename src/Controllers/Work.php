@@ -1,23 +1,23 @@
 <?php
-    declare(strict_types=1);
-    namespace App\Controllers;
+declare(strict_types=1);
 
-    class Work{
-        public function workstat($interval) {
-            $work           = new \Core\Calculation();
-            $annualSpent    = 250;             // 5 hours per day for 50 weeks, rest of the days are holidays and etc day-offs
-            $hoursByPeriods = [          
-                // '18' => 4,       
-                // '25' => 8,       
-                // '55' => 7,       
-                // '65' => 5       
+namespace App\Controllers;
 
-                '18-24' => 4,
-                '25-54' => 8,
-                '55-64' => 7,
-                '65-75' => 5
-            ];
-            return $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
-        } 
+class Work {
+    public function workstat(\DateInterval $interval): array {
+        $calculator = new \Core\Calculation();
+        $annualSpent = 365;
+        $hoursByPeriods = [
+            '18-30' => 8,
+            '30-50' => 7,
+            '50-65' => 5,
+        ];
+        $result = $calculator->calculateHours($interval, $hoursByPeriods, $annualSpent);
+
+        return [
+            'totalWorkTime' => round($result['Done']),
+            'avgWorkTime' => round($result['Done'] / ($interval->y > 0 ? $interval->y : 1), 2),
+            'remainingWorkTime' => round($result['Left']),
+        ];
     }
-?>
+}
