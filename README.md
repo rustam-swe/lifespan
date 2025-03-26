@@ -28,4 +28,5 @@ For the project, the number of work-days in aweek is agreed to be 5 days as avar
 End of the periods is valued as 75 and logic conflicts may occur when users are older than 75 years old . As a solution, congratulation statement is included that is returned instead of time left to work in future when it comes to users older than 75 years old. 
 # 6) Source of statistics :
 -> https://www.bls.gov/charts/american-time-use/activity-by-age.htm
+
 -> https://ourworldindata.org/time-use
