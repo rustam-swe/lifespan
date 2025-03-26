@@ -11,15 +11,22 @@
         <h2 class="text-primary">Work</h2>
         <div class="mb-3">
             <label for="avgTotal" class="form-label">Average total work hours:</label>
-            <input type="text" id="avgTotal" name="avgTotal" class="form-control" value="<?php echo ' '.$result["avgTotal"].' hours'; ?>" readonly>
-        </div>
+            <input type="text" id="avgTotal" name="avgTotal" class="form-control" value="<?php echo ' '.$result["avgTotalHours"].' hours,  '.
+                $result["avgTotalDays"] . ($result["avgTotalDays"] > 1 ? ' days,  ' : ' day,  ') .
+                $result["avgTotalYears"] . ($result["avgTotalYears"] > 1 ? ' years' : ' year');?>" readonly>
+        </div> 
         <div class="mb-3">
             <label for="Done" class="form-label">You worked:</label>
-            <input type="text" id="Done" name="Done" class="form-control" value="<?php echo ' '.$result["Done"].' hours'; ?>" readonly>
+            <input type="text" id="Done" name="Done" class="form-control" value="<?php echo ' '.$result["DoneHours"].' hours,  '.
+                $result["DoneDays"] . ($result["DoneDays"] > 1 ? ' days,  ' : ' day,  ').
+                $result["DoneYears"] . ($result["DoneYears"] > 1 ? ' years' : ' year'); ?>" readonly>
         </div>
         <div class="mb-3">
             <label for="leftWork" class="form-label">You can work another:</label>
-            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["Left"]<=0) ? 'Thanks for your service 🫡' : $result['Left'].' hours' ?>" readonly>
+            <input type="text" id="Left" name="Left" class="form-control" value="<?php echo ($result["LeftHours"]<=0) ? 'Thanks for your service 🫡' : 
+                ($result['LeftHours'].' hours,  '.
+                $result["LeftDays"] . ($result["LeftDays"] > 1 ? ' days,  ' : ' day,  ').
+                $result["LeftYears"]. ($result["LeftYears"] > 1 ? ' years' : ' year')) ?>" readonly>
         </div>
     </div>
 
