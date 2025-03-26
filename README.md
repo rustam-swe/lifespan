@@ -1,37 +1,125 @@
 
 # L I F E S P A N
 
-# Have you ever think about your life stats like it is in video games ?
+## Have You Ever Thought About Your Life Stats Like in a Video Game?
 
-# Now we offer this chance especially for you by this project ! 
+Now you can explore your life statistics with the **Lifespan Calculator**! This project offers you a unique chance to see how much time you’ve spent—and will spend—on activities like sleeping, working, spending time with family, eating, traveling, and studying. Enter your birthday, and you’re **guaranteed to be SHOCKED** by the results! 😱
 
-# Thanks for your CONGRATULATIONS }:) 
+---
 
-# Run your localhost in order to launch the project :
-```bash
-php localhost:< port number >
+## Features
+
+- **Interactive Stats**: Calculate time spent on key life activities:
+  - Sleep (`Sleep Time`)
+  - Work (`Work Time`)
+  - Family Time (`Family Time`)
+  - Travel (`Road Time`)
+  - Eating (`Eating Time`)
+  - Studying (`Study Time`)
+- **Detailed Breakdown**: See total, average, and remaining time in hours, days, and years.
+- **Stunning Design**: Built with Bootstrap 5, Font Awesome icons, and custom glassmorphism styles.
+- **Smooth Animations**: Hover effects on buttons and stat cards for a polished user experience.
+- **Session Support**: Your last entered birthday is saved for convenience.
+
+---
+
+## Installation
+
+Follow these steps to set up the Lifespan Calculator locally:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/rustam-swe/lifespan.git
+   cd lifespan-calculator
+   ```
+
+2. **Install Dependencies**:
+   Ensure you have [Composer](https://getcomposer.org/) installed, then run:
+   ```bash
+   composer install
+   ```
+
+3. **Run the Application**:
+   Start the PHP development server (replace `<port number>` with your preferred port, e.g., `8000`):
+   ```bash
+   php -S localhost:<port number>
+   ```
+
+4. **Access the App**:
+   Open your browser and navigate to:
+   ```
+   http://localhost:<port number>
+   ```
+
+---
+
+## Usage
+
+1. **Enter Your Birthday**:
+   - On the homepage, input your date of birth in the format `YYYY-MM-DD` (e.g., `1990-01-01`).
+   - Click the "Submit" button.
+
+2. **View Your Life Stats**:
+   - You’ll be redirected to the results page, where you’ll see your lifespan statistics.
+   - Example: "Total family time: 72166 hours", "Average work time: 208.28 hours", and more.
+   - Use the "Back to Form" button to try a different date.
+
+3. **Edge Cases**:
+   - If you’re over 75 years old, the app will congratulate you instead of showing remaining time.
+   - Invalid inputs (e.g., empty date) will display an error message like "Date of birth is required."
+
+---
+
+## How It Works: Work Time Calculation
+
+Here’s a detailed breakdown of how the "Work Time" statistics are calculated:
+
+### 1. Declaring Variables
+   - **Work Days**: We assume an average of 5 workdays per week.
+   - **Work Weeks**: People work 50 weeks per year (excluding weekends and holidays).
+   - **Daily Work Hours by Age**:
+     - Ages 18–24: 4 hours/day (due to study commitments).
+     - Ages 25–54: 8 hours/day.
+     - Ages 55–65: 7 hours/day.
+     - Ages 65–75: 5 hours/day.
+
+### 2. Year-Based Calculation
+   - Annual work days = 5 workdays/week × 50 weeks/year = 250 days.
+   - For each age period, multiply the annual work days by the daily work hours and the number of years in that period.
+   - Add the results for all periods up to the user’s current age.
+
+### 3. Including Odd Months and Days
+   - To improve precision, we account for remaining months and days:
+     - Odd months are converted to days (annual work days ÷ 12 × months).
+     - Add remaining days from the year and month.
+     - Multiply the total odd days by the daily work hours for the current age period.
+
+### 4. Final Results
+   - **Total Work Time**: Sum of hours from year-based and odd days calculations.
+   - **Average Work Time**: Total work hours divided by the user’s age.
+   - **Remaining Work Time**: Subtract total work hours from the average lifespan work hours (calculated for 75 years).
+
+### 5. Edge Cases
+   - If the user is over 75 years old, a congratulatory message is shown instead of remaining work time.
+
+### 6. Data Sources
+   - [Bureau of Labor Statistics: American Time Use Survey](https://www.bls.gov/charts/american-time-use/activity-by-age.htm)
+   - [Our World in Data: Time Use](https://ourworldindata.org/time-use)
+   - [U.S. Center for Disease Control and Prevention](https://www.cdc.gov/sleep/about/index.html)
+
+---
+
+## Project Structure
+
 ```
-# Enter your birthday ( YYYY.MM.DD ) and you are guaranteed to be SHOCKED !
-
-# Section Work :
--> Calculation process of working time :
-# 1) The 1st Step -> Declaring variables :
-   To begin with, the number of work-days must be assigned so that the quantity of weeks those people have to work in can be declared accordingly.
-For the project, the number of work-days in aweek is agreed to be 5 days as avarage work-days in a week. In accordance with the quantity of work-days in a week, avarage number of weeks that people work in is declared to be 50 weeks in a year and at the same time weekends and the rest of the weeks in a year are considered as day-offs and excluded from calculation process. So people work 5 days in a week but there ist a case that avarage daily working hours differs  between cetain age periods. As an example, anvarage daily working hours between the ages of 18 and 24 is about 4 hours as they have to spent significant  amount of time on their study during this periodand etc (25-54 ages => 8 years, 54-65 ages => 7 years, 65-75 ages => 5 years). 
-# 2) The 2nd Step -> year based calculation : 
-   In calculation process, multiplication of 5 workdays in a week * 50  working weeks in a year represents the quantity of annual working days.
- In order to get final result, the daily working hours those are different from each other according to periods must be multiplied to annual working days and this action calculated for each period until the process reaches to the situation that the age fits into certain interval of ages and all multiplications are added in the end. 
-# 3) The 3rd Step -> including odd months and days from year :
- To improve the percision, in case there are some months or days left from age/year-based calculation, the number of odd months are multiplied to division of annual working days to 12, so that avarage monthly working days can be found out and added to left days from both of year and month. Following steps leads to multiplication of total odd days to the daily working hours that is suitable to age period.  
-# 4) The 4th Step -> calculation results :
-   The results from 3rd and 4th steps are added each other as a final result of the hours spent on work till now. Avarage time spent on work in lifespan can be calculated by addition of multiplications of age periods, annual working days and periodically suitable daily woking hours. The time left tha can be spent on work in future is equal to subtraction of total hours spent on work from avarage hours spent on work in lifespan.
-# 5) The 5th step: -> considering edge keys :
-End of the periods is valued as 75 and logic conflicts may occur when users are older than 75 years old . As a solution, congratulation statement is included that is returned instead of time left to work in future when it comes to users older than 75 years old. 
-# 6) Source of statistics :
-## General
--> https://www.bls.gov/charts/american-time-use/activity-by-age.htm
-
--> https://ourworldindata.org/time-use
-
-## Sleep
--> https://www.cdc.gov/sleep/about/index.html
+lifespan-calculator/
+├── src/
+│   ├── Controllers/      # Controller classes (Family, Work, Sleep, etc.)
+│   ├── Core/             # Core logic (Person, Calculation, etc.)
+│   └── Interfaces/       # Interface definitions
+├── views/                # View templates (form.php, results.php, etc.)
+├── styles/               # Custom CSS (styles.css with glassmorphism)
+├── vendor/               # Composer dependencies
+├── composer.json         # Composer configuration
+└── index.php             # Entry point and router
+```
