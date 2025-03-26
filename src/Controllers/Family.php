@@ -15,7 +15,11 @@ class Family {
         $person = new \Core\Person($birthdate);
         $interval = $person->period;
         $age = $person->age;
+        $totalDaysLived = $birth->diff($now)->days;
+        $familyDays = 0;
+        $averageLifeDuration = \Core\Person::AVERAGE_LIFE_DURATION;
 
+        
         $familyCoefficients = [
             '0-3'   => 0.9,
             '4-6'   => 0.6,

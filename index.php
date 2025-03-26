@@ -9,10 +9,6 @@ $router = new \Router\Router();
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// if (BASE_PATH !== '/' && strpos($path, BASE_PATH) === 0) {
-//     $path = substr($path, strlen(BASE_PATH));
-// }
-
 if ($path === '' || $path === '/') {
     $path = '/form';
 }
@@ -43,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
             '31-50' => 3,
             '51-75' => 2
         ];
-        // $roadData = $road->travelTime($person->age, $hoursByPeriods, 365);
+        $roadData = $road->roadStats($person->period);
 
         $studyData = ['studyHours' => 0, 'remainingStudyHours' => 0];
 
@@ -51,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
             'familyTime' => $familyTime,
             'workData' => $workData,
             'sleepData' => $sleepData,
-            // 'roadData' => $roadData,
+            'roadData' => $roadData,
             'studyData' => $studyData,
             'birthday' => $birthday,
             'person' => $person,
