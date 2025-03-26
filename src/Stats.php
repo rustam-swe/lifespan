@@ -10,9 +10,9 @@ class Stats {
   public function allStats() {
     //$this->getSleep();
     //$this->getFamily();
-    //$this->getStudy($this->person->age);
+    $this->getStudy($this->person->age);
     //$this->getRoad($this->person->age);
-    $this->getWork();
+    //$this->getWork();
   }
   public function getSleep() {
     $birthday = $this->person->dob->format('y-m-d');

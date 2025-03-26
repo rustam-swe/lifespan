@@ -6,7 +6,7 @@
     class Study {
         
         public function studyStat($interval) {
-            $study = new \App\Controllers\Calculation();
+            $study = new \Core\Calculation();
             $annualSpent = 230;             // 5 hours per day for 43 weeks, rest of the days are holidays and etc day-offs
             $hoursByPeriods = [          
                 // '18' => 4,       
