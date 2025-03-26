@@ -8,11 +8,11 @@ class Stats {
   }
 
   public function allStats() {
-    //$this->getSleep();
+    $this->getSleep();
     //$this->getFamily();
     $this->getStudy($this->person->age);
-    //$this->getRoad($this->person->age);
-    //$this->getWork();
+    $this->getRoad($this->person->age);
+    $this->getWork();
   }
   public function getSleep() {
     $birthday = $this->person->dob->format('y-m-d');
@@ -32,7 +32,7 @@ class Stats {
     require 'views/family.php'; 
   }
   
-  public static function getStudy($age): void {
+  public  function getStudy(): void {
     if($age > 7) {
 
     $study    = new \App\Controllers\Study();
