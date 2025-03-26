@@ -1,6 +1,3 @@
-<?php
-?>
-
 <hr>
 <h2>Eating Time</h2>
 <div class="stat-card">

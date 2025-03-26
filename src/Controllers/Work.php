@@ -8,16 +8,24 @@ class Work {
         $calculator = new \Core\Calculation();
         $annualSpent = 365;
         $hoursByPeriods = [
-            '18-30' => 8,
-            '30-50' => 7,
-            '50-65' => 5,
+            '18-24' => 4,
+            '25-54' => 8,
+            '55-64' => 7,
+            '65-75' => 5
         ];
-        $result = $calculator->calculateHours($interval, $hoursByPeriods, $annualSpent);
-
+      
+        $result = $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+      
         return [
-            'totalWorkTime' => round($result['Done']),
-            'avgWorkTime' => round($result['Done'] / ($interval->y > 0 ? $interval->y : 1), 2),
-            'remainingWorkTime' => round($result['Left']),
+            'DoneHours' => $result['Done'],
+            'DoneDays' => round($result['Done'] / 24, 2),
+            'DoneYears' =>round($result['Done'] / 24 / 365, 2),
+            'LeftHours' => $result['Left'],
+            'LeftDays' => round($result['Left'] / 24, 2),
+            'LeftYears' => round($result['Left'] / 24 / 365,),
+            'avgTotalHours' => $result['avgTotal'],
+            'avgTotalDays' => round($result['avgTotal'] / 24, 2),
+            'avgTotalYears' => round($result['avgTotal'] / 24 / 365, 2)
         ];
     }
 }

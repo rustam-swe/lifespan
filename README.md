@@ -1,3 +1,4 @@
+
 # L I F E S P A N
 
 ## Have You Ever Thought About Your Life Stats Like in a Video Game?
@@ -104,6 +105,7 @@ Here’s a detailed breakdown of how the "Work Time" statistics are calculated:
 ### 6. Data Sources
    - [Bureau of Labor Statistics: American Time Use Survey](https://www.bls.gov/charts/american-time-use/activity-by-age.htm)
    - [Our World in Data: Time Use](https://ourworldindata.org/time-use)
+   - [U.S. Center for Disease Control and Prevention](https://www.cdc.gov/sleep/about/index.html)
 
 ---
 
@@ -121,9 +123,3 @@ lifespan-calculator/
 ├── composer.json         # Composer configuration
 └── index.php             # Entry point and router
 ```
-
----
-
-
-Enjoy exploring your life stats with Lifespan Calculator! 🎮
-
