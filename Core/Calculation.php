@@ -7,8 +7,9 @@
         
         public function calculateHours($interval, $hoursByPeriods, $annualSpent) {
             
+            $endperiod          = (int)explode('-', array_key_last($hoursByPeriods))[1];
             $age                = $interval->y;
-            $additionalDays     = $age>=75 ? 0 : $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
+            $additionalDays     = $age >= $endperiod ? 0 : $interval->m * $annualSpent/12 + $interval->d;             // work days in a month (12 months in a year)
             $totalHours         = 0;
             $avgWorkSpan        = 0;
             $additionalDayHours = 0;
@@ -36,3 +37,4 @@
             ];
         }
     }
+ 

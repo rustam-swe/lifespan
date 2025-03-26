@@ -1,10 +1,13 @@
-<?php
-$sleepObj = new \App\Controllers\Sleep();   
-$person   = new \App\Person($birthday);
-$interval = $person->period;
-$result   = $sleepObj->sleepstat($interval);
-?>
-<h2>Slept</h2>
-<label>Total Slept: <input type="text" value=" <?= $result['hours'] ?> hours or <?= $result['years'] ?> years." readonly></label><br><br>
-<label>Remaining Sleep: <input type="text" value=" <?= $result['remainingHours'] ?> hours or <?= $result['remainingYears'] ?> years." readonly></label><br><br>
-<label>Common Sleeping Bear: <input type="text" value=" <?= $result['totalSleepHours'] ?> hours or <?= $result['totalSleepYears'] ?> years." readonly></label><br><br>
+<h2>Sleep Time</h2>
+<div class="stat-card">
+    <i class="fas fa-bed"></i>
+    <p>Total sleep time: <?php echo isset($sleepData['totalSleepYears']) ? $sleepData['totalSleepYears'] . ' years (' . $sleepData['totalSleepDays'] . ' days, ' . $sleepData['totalSleepHours'] . ' hours)' : 'N/A'; ?></p>
+</div>
+<div class="stat-card">
+    <i class="fas fa-moon"></i>
+    <p>Time slept: <?php echo isset($sleepData['years']) ? $sleepData['years'] . ' years (' . $sleepData['days'] . ' days, ' . $sleepData['hours'] . ' hours)' : 'N/A'; ?></p>
+</div>
+<div class="stat-card">
+    <i class="fas fa-hourglass-end"></i>
+    <p>Remaining sleep time: <?php echo isset($sleepData['remainingYears']) ? $sleepData['remainingYears'] . ' years (' . $sleepData['remainingDays'] . ' days, ' . $sleepData['remainingHours'] . ' hours)' : 'N/A'; ?></p>
+</div>

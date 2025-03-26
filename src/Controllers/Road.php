@@ -4,32 +4,26 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 class Road {
-  public function travelTime(int $age, array $hoursByPeriods, int $annualSpent): array {
-    $totalTravelHours = 0;
-    $avgTravelSpan    = 0;
+    public function roadStats($interval) {
+        $road = new \Core\Calculation();
+        $annualSpent = 365;
+        $hoursByPeriods = [
+            '18-24' => 2,
+            '25-54' => 2.5,
+            '55-64' => 1.5,
+            '65-75' => 1
+        ];
 
-    foreach ($hoursByPeriods as $range => $hoursPerDay) {
-      [$periodStart, $periodEnd] = explode('-', $range);
+        $calculationData = $road->calculateHours($interval, $hoursByPeriods, $annualSpent);
 
-      $periodStart = (int) $periodStart;
-      $periodEnd = (int) $periodEnd;
+        $age = $interval->y;
+        $yearsTraveling = $age >= 18 ? $age - 18 : 0;
+        $avgTravel = $yearsTraveling > 0 ? $calculationData['Done'] / $yearsTraveling : 0;
 
-      $avgYears = $periodEnd - $periodStart;
-      $avgTravelSpan += $annualSpent * $avgYears * $hoursPerDay;
-
-      if ($age > $periodStart) {
-        $years = min($age, $periodEnd) - $periodStart;
-        $totalTravelHours += $annualSpent * $years * $hoursPerDay;
-      }
+        return [
+            'totalTravelTime' => round($calculationData['Done']),
+            'avgTravel' => round($avgTravel, 2),
+            'leftTravel' => round($calculationData['Left']),
+        ];
     }
-
-    $leftTravelHours = $avgTravelSpan - $totalTravelHours;
-
-    return [
-      "totalTravelTime" => $totalTravelHours,
-      "avgTravel" => $avgTravelSpan,
-      "leftTravel" => $leftTravelHours
-    ];
-  }
 }
-
