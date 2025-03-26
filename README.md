@@ -1,3 +1,4 @@
+
 # L I F E S P A N
 
 # Have you ever think about your life stats like it is in video games ?
@@ -27,6 +28,10 @@ For the project, the number of work-days in aweek is agreed to be 5 days as avar
 # 5) The 5th step: -> considering edge keys :
 End of the periods is valued as 75 and logic conflicts may occur when users are older than 75 years old . As a solution, congratulation statement is included that is returned instead of time left to work in future when it comes to users older than 75 years old. 
 # 6) Source of statistics :
+## General
 -> https://www.bls.gov/charts/american-time-use/activity-by-age.htm
 
 -> https://ourworldindata.org/time-use
+
+## Sleep
+-> https://www.cdc.gov/sleep/about/index.html
