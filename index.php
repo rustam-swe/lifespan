@@ -45,6 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
         $eating = new \App\Controllers\Eating();
         $eatingData = $eating->eatingCalculate($person->period);
 
+        $study=new \App\Controllers\Study();
+        $studyDate=$study->studyStat($person->period);
+
         $studyData = ['studyHours' => 0, 'remainingStudyHours' => 0];
 
 

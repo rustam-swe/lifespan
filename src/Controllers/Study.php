@@ -7,22 +7,23 @@
         
         public function studyStat($interval) {
             $study = new \Core\Calculation();
-            $annualSpent = 230;             // 5 hours per day for 43 weeks, rest of the days are holidays and etc day-offs
+            $annualSpent = 230; // Yillik sarflangan kunlar
             $hoursByPeriods = [          
-                
                 '7-11' => 4,
                 '12-14' => 6,
                 '15-18' => 7,
                 '19-25' => 4
             ];
-            $result=$study->calculateHours($interval, $hoursByPeriods, $annualSpent);
-            return [
-                "avgTotal" => $result["avgTotal"],
-                "Studied" => $result["Done"],
-                "RemainingStudy" => $result["Left"]
-            ];
             
+            $result = $study->calculateHours($interval, $hoursByPeriods, $annualSpent);
+        
+            return [
+                "avgTotal" => $result["avgTotal"] ?? 0,
+                "Studied" => $result["Done"] ?? 0,
+                "RemainingStudy" => $result["Left"] ?? 0
+            ];
         }
+        
     }
 
 ?>
