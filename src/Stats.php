@@ -10,7 +10,7 @@ class Stats {
   public function allStats() {
     $this->getSleep();
     //$this->getFamily();
-    //$this->getStudy($this->person->age);
+    $this->getStudy();
     echo '<pre>';
     print_r($this->getAllActivitiesTotalSpentTime());
     echo '</pre>';
@@ -40,10 +40,16 @@ class Stats {
     require 'views/family.php'; 
   }
   
-  public static function getStudy($age): void {
-    if($age > 7) {
-        require 'views/study.php';
-     }
+  public  function getStudy(): void {
+    if($this->person->age > 7) {
+
+    $study    = new \App\Controllers\Study();
+    $interval = $this->person->period;
+    $result   = $study->studyStat($interval);
+
+    require 'views/study.php';
+
+    }
   }
 
   public function getRoad() {

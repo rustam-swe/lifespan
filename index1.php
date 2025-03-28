@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 
 define('BASE_PATH', '/');
 
+// Запускаем сессию для хранения последней даты рождения
 session_start();
 
 $router = new \Router\Router();
@@ -22,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
             throw new Exception("Date of birth is required.");
         }
 
+        // Сохраняем дату рождения в сессии
         $_SESSION['lastBirthday'] = $birthday;
 
         $person = new \Core\Person($birthday);
@@ -43,11 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
         $eating = new \App\Controllers\Eating();
         $eatingData = $eating->eatingCalculate($person->period);
 
-        $study=new \App\Controllers\Study();
-        $studyData = $study->studyStat($person->period);
-
-        // $studyData = ['studyHours' => 0, 'remainingStudyHours' => 0];
-
+        $study = new \App\Controllers\Study();
+        $studyData = $study->calculateStudyTime($person->period);
 
         $params = [
             'familyTime' => $familyTime,

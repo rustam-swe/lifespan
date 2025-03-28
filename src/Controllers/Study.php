@@ -1,34 +1,29 @@
 <?php
-declare(strict_types=1);
+    declare(strict_types=1);
 
-namespace Controllers;
+    namespace App\Controllers;
 
-class Study implements \Interfaces\Interfaces {
-
-    public function calculateHours($age, $hoursByPeriods, $annualSpent) {
+    class Study {
         
-        $totalHours = 0;
-
-        if ($age >= 18) {
-            foreach ($hoursByPeriods as $range => $hoursPerDay) {
-
-                [$periodStart, $periodEnd] = explode('-', $range . '-');    
-                
-                if ($age > $periodStart) {
-                    $years = min($age, $periodEnd) - $periodStart;
-                    $totalHours += $annualSpent * $years*$hoursPerDay;
-                }
-            }
+        public function studyStat($interval) {
+            $study = new \Core\Calculation();
+            $annualSpent = 230; // Yillik sarflangan kunlar
+            $hoursByPeriods = [          
+                '7-11' => 4,
+                '12-14' => 6,
+                '15-18' => 7,
+                '19-25' => 4
+            ];
+            
+            $result = $study->calculateHours($interval, $hoursByPeriods, $annualSpent);
+            
+            return [
+                "avgStudyHours" => $result["avgTotal"] ?? 0,
+                "studyHours" => $result["Done"] ?? 0,
+                "remainingStudyHours" => $result["Left"] ?? 0
+            ];
         }
         
-        $avgWorkSpan = $annualSpent * (4 * 6 + 8 * 29 + 7 * 9 + 5 * 10);
-        $leftWorkHours = $avgWorkSpan - $totalHours;
-        
-        return [
-            "worked" => $totalHours,
-            "leftWork" => $leftWorkHours,
-            "avgTotal" => $avgWorkSpan
-        ];
     }
-}
+
 ?>
