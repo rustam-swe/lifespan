@@ -1,35 +1,77 @@
 <?php
-  declare(strict_types=1);
-
-  session_start(); 
+declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
+define('BASE_PATH', '/');
 
-require 'views/form.php';   
+// Запускаем сессию для хранения последней даты рождения
+session_start();
 
-if (!isset($_POST["dob"])){
-   return;
+$router = new \Router\Router();
+
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+if ($path === '' || $path === '/') {
+    $path = '/form';
 }
 
-$birthday = $_POST['dob'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $path === '/form') {
+    try {
+        $birthday = $_POST['dob'] ?? null;
+        if (!$birthday) {
+            throw new Exception("Date of birth is required.");
+        }
 
- $person = new \App\Person($birthday);
- $generalInfo =  "Current date:". date('Y-m-d');
- $generalInfo .= "<br> Age: $person->age";
+        // Сохраняем дату рождения в сессии
+        $_SESSION['lastBirthday'] = $birthday;
 
- echo $generalInfo;
+        $person = new \Core\Person($birthday);
 
- $stats = new \App\Stats($person);
-$stats->getSleep();
+        $stats = new \App\Stats($person);
 
- require 'views/family.php';
+        $family = new \App\Controllers\Family();
+        $familyTime = $family->calculateFamilyTime($birthday);
 
- $_SESSION['birthday'] = $birthday;
+        $work = new \App\Controllers\Work();
+        $workData = $work->workstat($person->period);
 
- if($person->age > 7) {
-    require 'views/study.php';
-    require 'views/road.php';
- }
+        $sleep = new \App\Controllers\Sleep();
+        $sleepData = $sleep->sleepstat($person->period);
 
-$stats->getWork();
+        $road = new \App\Controllers\Road();
+        $roadData = $road->roadStats($person->period);
+
+        $eating = new \App\Controllers\Eating();
+        $eatingData = $eating->eatingCalculate($person->period);
+
+        $study = new \App\Controllers\Study();
+        $studyData = $study->calculateStudyTime($person->period);
+
+        $params = [
+            'familyTime' => $familyTime,
+            'workData' => $workData,
+            'sleepData' => $sleepData,
+            'roadData' => $roadData,
+            'eatingData' => $eatingData,
+            'studyData' => $studyData,
+            'birthday' => $birthday,
+            'person' => $person,
+        ];
+
+        $router->route('/results', $params);
+        exit;
+    } catch (Exception $e) {
+        $error = "An error occurred: " . $e->getMessage();
+        $lastBirthday = $_SESSION['lastBirthday'] ?? null;
+        $router->route('/form', ['error' => $error, 'lastBirthday' => $lastBirthday]);
+        exit;
+    }
+} elseif ($path === '/results') {
+    header('Location: /form');
+    exit;
+} else {
+    $lastBirthday = $_SESSION['lastBirthday'] ?? null;
+    $router->route($path, ['lastBirthday' => $lastBirthday]);
+    exit;
+}

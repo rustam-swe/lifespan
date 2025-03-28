@@ -16,16 +16,14 @@
             ];
             
             $result = $study->calculateHours($interval, $hoursByPeriods, $annualSpent);
-        
+            
             return [
-                "avgTotal" => $result["avgTotal"] ?? 0,
-                "Studied" => $result["Done"] ?? 0,
-                "RemainingStudy" => $result["Left"] ?? 0
+                "avgStudyHours" => $result["avgTotal"] ?? 0,
+                "studyHours" => $result["Done"] ?? 0,
+                "remainingStudyHours" => $result["Left"] ?? 0
             ];
         }
         
     }
 
 ?>
-    
-
