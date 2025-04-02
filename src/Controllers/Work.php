@@ -14,7 +14,7 @@ class Work {
             '65-75' => 5
         ];
       
-        $result = $work->calculateHours($interval, $hoursByPeriods, $annualSpent);
+        $result = $calculator->calculateHours($interval, $hoursByPeriods, $annualSpent);
       
         return [
             'DoneHours' => $result['Done'],

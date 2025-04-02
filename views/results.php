@@ -15,55 +15,59 @@
         <hr>
 
         <div class="px-3">
-            <?php if (isset($familyTime) && $familyTime): ?>
-                <div class="mb-4">
-                    <?php require 'family.php'; ?>
+            <div class="row gx-5 gy-5"> 
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($familyTime)): ?>
+                        <?php require 'family.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Family data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Family data not available.</p>
-            <?php endif; ?>
 
-            <?php if (isset($workData) && $workData): ?>
-                <div class="mb-4">
-                    <?php require 'work.php'; ?>
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($workData)): ?>
+                        <?php require 'work.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Work data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Work data not available.</p>
-            <?php endif; ?>
 
-            <?php if (isset($sleepData) && $sleepData): ?>
-                <div class="mb-4">
-                    <?php require 'sleep.php'; ?>
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($sleepData)): ?>
+                        <?php require 'sleep.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Sleep data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Sleep data not available.</p>
-            <?php endif; ?>
 
-            <?php if (isset($roadData) && $roadData): ?>
-                <div class="mb-4">
-                    <?php require 'road.php'; ?>
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($roadData)): ?>
+                        <?php require 'road.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Road data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Road data not available.</p>
-            <?php endif; ?>
 
-            <?php if (isset($eatingData) && $eatingData): ?>
-                <div class="mb-4">
-                    <?php require 'eating.php'; ?>
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($eatingData)): ?>
+                        <?php require 'eating.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Eating data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Eating data not available.</p>
-            <?php endif; ?>
 
-            <?php if (isset($studyData) && $studyData): ?>
-                <div class="mb-4">
-                    <?php require 'study.php'; ?>
+                <div class="col-md-4 mb-5">
+                    <?php if (isset($studyData)): ?>
+                        <?php require 'study.php'; ?>
+                    <?php else: ?>
+                        <p class="error-message">Study data not available.</p>
+                    <?php endif; ?>
                 </div>
-            <?php else: ?>
-                <p class="error-message mb-4">Study data not available.</p>
-            <?php endif; ?>
+            </div>
 
-            <a href="/form" class="back-button">Back to Form</a>
+            <div class="text-center">
+                <a href="/form" class="back-button">Back to Form</a>
+            </div>
         </div>
     </div>
 </body>
